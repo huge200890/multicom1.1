@@ -1,0 +1,26 @@
+###############################Software and Data Settings####################
+#prosys script dir
+prosys_dir = /home/jh7x3/multicom_v1.1/src/meta/
+
+#Unicon3D tool dir
+tool_dir = /home/jh7x3/multicom_v1.1/tools/UniCon3D/
+
+#metapsicov tool dir
+metapsicov_dir = /home/jh7x3/multicom_v1.1/tools/metapsicov-pipeline-2.0/
+
+#SCRATCH tool dir
+SCRATCH_dir = /home/jh7x3/multicom_v1.1/tools/SCRATCH-1D_1.1/
+
+#decoy_model_number
+decoy_model_number = 30
+
+#final_model_number
+final_model_number = 5
+
+#Unicon3D prefix
+output_prefix_name = Unicon3d
+
+
+
+
+

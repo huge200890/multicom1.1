@@ -1,0 +1,32 @@
+
+#multicom dir
+multicom_dir = /home/jh7x3/multicom_v1.1/src/meta/
+
+#option for generate full length model
+meta_option_full_length = /home/jh7x3/multicom_v1.1/src/meta/test_system/multicom_option_casp13
+
+#option for generate easy domain model
+meta_option_easy_domain = /home/jh7x3/multicom_v1.1/src/meta/test_system/multicom_option_casp13
+
+#option for generate hard domain model
+meta_option_hard_domain = /home/jh7x3/multicom_v1.1/src/meta/test_system/multicom_option_hard_casp13
+
+#prosys dir
+prosys_dir = /home/jh7x3/multicom_v1.1/src/prosys/
+
+#model dir
+modeller_dir = /home/jh7x3/multicom_v1.1/tools/modeller-9.16/
+
+#tm_score
+tm_score = /home/jh7x3/multicom_v1.1/tools/tm_score/TMscore_32
+
+#q_score
+q_score = /home/jh7x3/multicom_v1.1/tools/pairwiseQA/q_score
+
+
+#number of models to simulate for generating one model by Modeller
+cm_model_num = 5
+
+#total number of combined models to generate (for domain combination only)
+final_model_num = 5
+

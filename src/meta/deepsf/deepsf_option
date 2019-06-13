@@ -1,0 +1,12 @@
+###############################Software and Data Settings####################
+#prosys script dir
+prosys_dir = /home/jh7x3/multicom_v1.1/src/meta
+
+#novel prediction program
+deepsf_program = /home/jh7x3/multicom_v1.1/tools/deepsf/run_deepsf_3d.sh 
+
+final_model_number = 5
+
+#novel model prefix
+output_prefix_name = deepsf 
+

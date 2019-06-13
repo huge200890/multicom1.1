@@ -1,0 +1,116 @@
+# pspro2
+pspro2:installation/MULTICOM_programs/T1-run-pspro2.sh
+
+# SCRATCH
+SCRATCH:installation/MULTICOM_programs/T2-run-SCRATCH.sh
+
+# freecontact
+freecontact:installation/MULTICOM_programs/T3-run-freecontact.sh
+
+# dncon2
+dncon2:installation/MULTICOM_programs/T4-run-dncon2.sh
+
+# modeller9.16
+modeller916:installation/MULTICOM_programs/T5-run-modeller9.16.sh
+
+# modeller9.7
+modeller97:installation/MULTICOM_programs/T6-run-modeller9.7.sh
+
+# hhsearch
+hhsearch_easy:installation/MULTICOM_programs/P1-run-hhsearch.sh
+hhsearch_hard:installation/MULTICOM_programs/P1-run-hhsearch-hard.sh
+
+# hhsearch15
+hhsearch15_easy:installation/MULTICOM_programs/P2-run-hhsearch15.sh
+hhsearch15_hard:installation/MULTICOM_programs/P2-run-hhsearch15-hard.sh
+
+# hhsearch151
+hhsearch151_easy:installation/MULTICOM_programs/P3-run-hhsearch151.sh
+hhsearch151_hard:installation/MULTICOM_programs/P3-run-hhsearch151-hard.sh
+
+# hhsuite
+hhsuite:installation/MULTICOM_programs/T11-run-hhsuite.sh
+
+# hhsuite3
+hhsuite3:installation/MULTICOM_programs/T33-run-hhsuite3.sh
+
+# hmmer
+hmmer_easy:installation/MULTICOM_programs/T18-run-hmmer.sh
+hmmer_hard:installation/MULTICOM_programs/T18-run-hmmer-hard.sh
+
+# hmmer3
+hmmer3:installation/MULTICOM_programs/T19-run-hmmer3.sh
+
+# hhblits
+hhblits:installation/MULTICOM_programs/T23-run-hhblits.sh
+
+# hhblits3
+hhblits3:installation/MULTICOM_programs/T24-run-hhblits3.sh
+
+# hhpred
+hhpred_easy:installation/MULTICOM_programs/P22-run-hhpred.sh
+hhpred_hard:installation/MULTICOM_programs/P22-run-hhpred-hard.sh
+
+
+# csblast
+csblast:installation/MULTICOM_programs/T10-run-csblast.sh
+
+# csiblast
+csiblast_easy:installation/MULTICOM_programs/T12-run-csiblast.sh
+csiblast_hard:installation/MULTICOM_programs/T12-run-csiblast-hard.sh
+
+# blast
+blast:installation/MULTICOM_programs/T13-run-blast.sh
+
+# psiblast
+psiblast_easy:installation/MULTICOM_programs/T14-run-psiblast.sh
+psiblast_hard:installation/MULTICOM_programs/T14-run-psiblast-hard.sh
+
+# compass
+compass_easy:installation/MULTICOM_programs/T15-run-compass.sh
+compass_hard:installation/MULTICOM_programs/T15-run-compass-hard.sh
+
+# sam
+sam_easy:installation/MULTICOM_programs/T16-run-sam.sh
+sam_hard:installation/MULTICOM_programs/T16-run-sam-hard.sh
+
+# prc
+prc_easy:installation/MULTICOM_programs/T17-run-prc.sh
+prc_hard:installation/MULTICOM_programs/T17-run-prc-hard.sh
+
+# raptorx
+raptorx:installation/MULTICOM_programs/T20-run-raptorx.sh
+
+# newblast
+newblast:installation/MULTICOM_programs/T21-run-newblast.sh
+
+
+# muster
+muster:installation/MULTICOM_programs/T25-run-muster.sh
+
+# ffas
+ffas:installation/MULTICOM_programs/T26-run-ffas.sh
+
+# confold
+confold:installation/MULTICOM_programs/T27-run-confold.sh
+
+# unicon3d
+unicon3d:installation/MULTICOM_programs/T28-run-unicon3d.sh
+
+# rosetta
+rosetta:installation/MULTICOM_programs/T29-run-rosetta.sh
+
+# rosettacon
+rosettacon:installation/MULTICOM_programs/T30-run-rosettacon.sh
+
+# deepsf
+deepsf:installation/MULTICOM_programs/T31-run-deepsf.sh
+
+# novel
+novel:installation/MULTICOM_programs/T32-run-novel.sh
+
+
+# fusioncon
+fusioncon:installation/MULTICOM_programs/T34-run-fusioncon.sh
+
+

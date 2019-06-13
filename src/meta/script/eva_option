@@ -1,0 +1,13 @@
+prosys_dir=/home/jh7x3/multicom_v1.1/src/prosys/
+
+model_check_dir=/home/jh7x3/multicom_v1.1/tools/model_eva1.0/
+
+betacon_dir=/home/jh7x3/multicom_v1.1/tools/betacon/
+
+pspro_dir=/home/jh7x3/multicom_v1.1/tools/pspro2/
+
+model_energy_dir=/home/jh7x3/multicom_v1.1/tools/energy/
+
+betapro_dir=/home/jh7x3/multicom_v1.1/tools/betapro-1.0/
+
+thread_num=12

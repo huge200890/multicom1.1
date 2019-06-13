@@ -1,0 +1,54 @@
+C;template; converted from global alignment
+>P1;1AUZA
+structureX:1AUZA: 1: : 116: : : : : 
+-------------SLGIDMNVKESVLCIRLTGELDHHTA---ETLKQKVTQSLEKDDIRHIVLNLEDLSFMDSSGLGVILGRYKQIKQIGGEMVVCAISPAVKRLFDMSGLFKIIRFEQSEQQALLTLGVAS*
+
+C;template; converted from global alignment
+>P1;1VC1A
+structureX:1VC1A: 1: : 96: : : : : 
+----------------LKLDIVEQKAIVRVQGDIDAYNS---SELKEQR--------NIKIVLDLSSVSYMDSAGLGTLVVILKDAKINGKEFILSSLKESISRILKLTHLDKIFKIT--D-------TVEA*
+
+C;template; converted from global alignment
+>P1;1TH8B
+structureX:1TH8B: 1: : 100: : : : : 
+-------------SLAIDLEVKQDVLIVRLSGELDHHTA---EELREVT---------LHIVLNLGQLTFMDSSGLGVILGRYKQIKNVG-QMVVCAVSPAVKRLFDMSGLFKIIRVEADQF------ALGV*
+
+C;template; converted from global alignment
+>P1;2KA5A
+structureX:2KA5A: 1: : 86: : : : : 
+-----------------PYKIVDDVVI--LM---------PNKIFKKFDN-------KGKIFLVLSDV-EIDSFSLGVIVNILKSISSSGGFFALVSPNEKVERVLSLTDRI--VKIDI-S-------AMER*
+
+C;template; converted from global alignment
+>P1;4HYLA
+structureX:4HYLA: 1: : 98: : : : : 
+-------------NTDTQIRTEQGIDIITLHGHLDTRSS---PAVQAVL---------VGKILDLREVS-YSSAGLRVLLSLYRHTSNQQGALVLVGVSEEIRD-TEITGFWNFFTACAEA-------ILGS*
+
+C;template; converted from global alignment
+>P1;3T6OA
+structureX:3T6OA: 1: : 92: : : : : 
+-----------------IRVTHEQVTVISFPFRLRETEV---EASFLAQ--------AQKVLIDLEGVEFFGSSFIELLVRGWKRIK--EGVFALCSVSPYCVEVLQVT-IDEVWPRS--T-------KALA*
+
+C;template; converted from global alignment
+>P1;4QTPA
+structureX:4QTPA: 1: : 97: : : : : 
+-------------SITTLVEDHDGVSVVSVSGEIDMVTA---PALEQIGV-------DPALVIDLA-VEFLGSVGLKILAATYEKLE---TGFGVVARGPTR-RPIHLTGLDKTPLYPTLD-------ALAR*
+
+C;template; converted from global alignment
+>P1;1H4XA
+structureX:1H4XA: 1: : 85: : : : : 
+-----------------AFQEMVTTVVIRLFGE--HHAV---EQIRAIST-------AIFGTIIWNRLSFM--SGVGLVLGRMRELEAVAGRTILLNPSPMRKVFFSLWMMD----------------AEVR*
+
+C;template; converted from global alignment
+>P1;3LLOA
+structureX:3LLOA: 1: : 76: : : : : 
+------------------YTVIPGIKI--FQ---------INPYY----A-------NLTVILDFTQV-NMDSVGVKTLAGIVKEYGDVGIYVYLAGCSAQVVNDLTSFFLH----I-----------AVGS*
+
+C;template; converted from global alignment
+>P1;1THNB
+structureX:1THNB: 1: : 102: : : : : 
+-------------SLAIDLEVKQDVLIVRLSGELDHHTA---EELREV----------LHIVLNLGQLTFMDSSGLGVILGRYKQIKNVGGQMVVCAVSPAVKRLFDMSGLFKIIRVEADEQA----LALGV*
+
+C;query; converted from global alignment
+>P1;T0993s2
+ : : : : : : : : : 
+MHHHHHHENLYFQSESLSWMQTGDTLA--LSGELDQDVLLPLWEMREEAV-------KGITCIDLSRVSRVDTGGLALLLHLIDLAKKQGNNVTLQGVNDKVYTLAKLYNLP----A---D-------VLPR*
