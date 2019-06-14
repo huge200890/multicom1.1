@@ -17,7 +17,8 @@ modeller_dir = SOFTWARE_PATH/tools/modeller-9.16/
 pdb_db_dir = SOFTWARE_PATH/databases/cm_lib/
 
 #nr database used by hhblits to generate profiles
-nr_db = SOFTWARE_PATH/databases/hhblits3_dbs/nr20/nr20
+#nr_db = SOFTWARE_PATH/databases/hhblits3_dbs/nr20/nr20
+nr_db = SOFTWARE_PATH/databases/uniprot20/uniprot20_2016_02/uniprot20_2016_02
 
 ###########new settings specifically for hhsearch profile-profile based approach
 #hhblits dir

@@ -43,3 +43,4 @@ else
 	cp $outputdir/hhsuite/hhsuite1.pdb $outputdir/$targetid.pdb 
 	printf "\nResults: $outputdir/$targetid.pdb\n\n"
 fi
+

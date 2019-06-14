@@ -8,7 +8,7 @@ SCRATCH:installation/MULTICOM_programs/T2-run-SCRATCH.sh
 freecontact:installation/MULTICOM_programs/T3-run-freecontact.sh
 
 # dncon2
-dncon2:installation/MULTICOM_programs/T4-run-dncon2.sh
+dncon2:installation/MULTICOM_programs/P4-run-dncon2.sh
 
 # modeller9.16
 modeller916:installation/MULTICOM_programs/T5-run-modeller9.16.sh
@@ -29,23 +29,23 @@ hhsearch151_easy:installation/MULTICOM_programs/P3-run-hhsearch151.sh
 hhsearch151_hard:installation/MULTICOM_programs/P3-run-hhsearch151-hard.sh
 
 # hhsuite
-hhsuite:installation/MULTICOM_programs/T11-run-hhsuite.sh
+hhsuite:installation/MULTICOM_programs/P11-run-hhsuite.sh
 
 # hhsuite3
-hhsuite3:installation/MULTICOM_programs/T33-run-hhsuite3.sh
+hhsuite3:installation/MULTICOM_programs/P33-run-hhsuite3.sh
 
 # hmmer
-hmmer_easy:installation/MULTICOM_programs/T18-run-hmmer.sh
-hmmer_hard:installation/MULTICOM_programs/T18-run-hmmer-hard.sh
+hmmer_easy:installation/MULTICOM_programs/P18-run-hmmer.sh
+hmmer_hard:installation/MULTICOM_programs/P18-run-hmmer-hard.sh
 
 # hmmer3
-hmmer3:installation/MULTICOM_programs/T19-run-hmmer3.sh
+hmmer3:installation/MULTICOM_programs/P19-run-hmmer3.sh
 
 # hhblits
-hhblits:installation/MULTICOM_programs/T23-run-hhblits.sh
+hhblits:installation/MULTICOM_programs/P23-run-hhblits.sh
 
 # hhblits3
-hhblits3:installation/MULTICOM_programs/T24-run-hhblits3.sh
+hhblits3:installation/MULTICOM_programs/P24-run-hhblits3.sh
 
 # hhpred
 hhpred_easy:installation/MULTICOM_programs/P22-run-hhpred.sh
@@ -53,55 +53,55 @@ hhpred_hard:installation/MULTICOM_programs/P22-run-hhpred-hard.sh
 
 
 # csblast
-csblast:installation/MULTICOM_programs/T10-run-csblast.sh
+csblast:installation/MULTICOM_programs/P10-run-csblast.sh
 
 # csiblast
-csiblast_easy:installation/MULTICOM_programs/T12-run-csiblast.sh
-csiblast_hard:installation/MULTICOM_programs/T12-run-csiblast-hard.sh
+csiblast_easy:installation/MULTICOM_programs/P12-run-csiblast.sh
+csiblast_hard:installation/MULTICOM_programs/P12-run-csiblast-hard.sh
 
 # blast
-blast:installation/MULTICOM_programs/T13-run-blast.sh
+blast:installation/MULTICOM_programs/P13-run-blast.sh
 
 # psiblast
-psiblast_easy:installation/MULTICOM_programs/T14-run-psiblast.sh
-psiblast_hard:installation/MULTICOM_programs/T14-run-psiblast-hard.sh
+psiblast_easy:installation/MULTICOM_programs/P14-run-psiblast.sh
+psiblast_hard:installation/MULTICOM_programs/P14-run-psiblast-hard.sh
 
 # compass
-compass_easy:installation/MULTICOM_programs/T15-run-compass.sh
-compass_hard:installation/MULTICOM_programs/T15-run-compass-hard.sh
+compass_easy:installation/MULTICOM_programs/P15-run-compass.sh
+compass_hard:installation/MULTICOM_programs/P15-run-compass-hard.sh
 
 # sam
-sam_easy:installation/MULTICOM_programs/T16-run-sam.sh
-sam_hard:installation/MULTICOM_programs/T16-run-sam-hard.sh
+sam_easy:installation/MULTICOM_programs/P16-run-sam.sh
+sam_hard:installation/MULTICOM_programs/P16-run-sam-hard.sh
 
 # prc
-prc_easy:installation/MULTICOM_programs/T17-run-prc.sh
-prc_hard:installation/MULTICOM_programs/T17-run-prc-hard.sh
+prc_easy:installation/MULTICOM_programs/P17-run-prc.sh
+prc_hard:installation/MULTICOM_programs/P17-run-prc-hard.sh
 
 # raptorx
-raptorx:installation/MULTICOM_programs/T20-run-raptorx.sh
+raptorx:installation/MULTICOM_programs/P20-run-raptorx.sh
 
 # newblast
-newblast:installation/MULTICOM_programs/T21-run-newblast.sh
+newblast:installation/MULTICOM_programs/P21-run-newblast.sh
 
 
 # muster
-muster:installation/MULTICOM_programs/T25-run-muster.sh
+muster:installation/MULTICOM_programs/P25-run-muster.sh
 
 # ffas
-ffas:installation/MULTICOM_programs/T26-run-ffas.sh
+ffas:installation/MULTICOM_programs/P26-run-ffas.sh
 
 # confold
-confold:installation/MULTICOM_programs/T27-run-confold.sh
+confold:installation/MULTICOM_programs/P27-run-confold.sh
 
 # unicon3d
 unicon3d:installation/MULTICOM_programs/T28-run-unicon3d.sh
 
 # rosetta
-rosetta:installation/MULTICOM_programs/T29-run-rosetta.sh
+rosetta:installation/MULTICOM_programs/P29-run-rosetta.sh
 
 # rosettacon
-rosettacon:installation/MULTICOM_programs/T30-run-rosettacon.sh
+rosettacon:installation/MULTICOM_programs/P30-run-rosettacon.sh
 
 # deepsf
 deepsf:installation/MULTICOM_programs/T31-run-deepsf.sh

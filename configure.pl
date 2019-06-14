@@ -575,6 +575,9 @@ $option_list = "$install_dir/installation/MULTICOM_configure_files/multicom_prog
 
 `rm $install_dir/installation/MULTICOM_programs/*sh`;
 `rm $install_dir/bin/*sh`;
+
+$python_env = 0;
+$boost_enable = 0;
 if(!(-e $method_file) or !(-e $option_list))
 {
 	print "\nFailed to find method file ($method_file and $option_list), please contact us!\n\n";
@@ -635,15 +638,74 @@ if(!(-e $method_file) or !(-e $option_list))
 	`rm $install_dir/installation/MULTICOM_configure_files/option.tmp`;
 	`cp $install_dir/installation/MULTICOM_programs/*sh $install_dir/bin/`;
 	
+	print "#########  Configuring examples, done\n\n\n";
+	
+	$method_indx = 0;
+	foreach $method (@contents)
+	{
+		chomp $method;
+		if(substr($method,0,1) eq '#')
+		{
+			next;
+		}
+		$method =~ s/^\s+|\s+$//g;
+		if($method eq '')
+		{
+			next;
+		}
+		$method_indx++;
+		
+		print  "\n################################################################# Method $method_indx: $method  #################################################################\n\n";
+		if(exists($method_programs{"${method}"}))
+		{
+			$file = $method_programs{"${method}"};
+			@tmp = split(/\//,$file);
+			$program_file = pop @tmp;
+			if(-e "$install_dir/bin/$program_file")
+			{
+				print "$install_dir/bin/$program_file <target id> <fasta> <output-directory>\n\n";
+				print "\t** Example: $install_dir/bin/$program_file T0993s2 $install_dir/examples/T0993s2.fasta $install_dir/test_out/T0993s2_$method\n\n";
+			}
+			
+		}
+		if(exists($method_programs{"${method}_easy"}))
+		{
+			$file = $method_programs{"${method}_easy"};
+			@tmp = split(/\//,$file);
+			$program_file = pop @tmp;
+			if(-e "$install_dir/bin/$program_file")
+			{
+				print "$install_dir/bin/$program_file <target id> <fasta> <output-directory>\n\n";
+				print "\t** Example: $install_dir/bin/$program_file T0993s2 $install_dir/examples/T0993s2.fasta $install_dir/test_out/T0993s2_$method\n\n";
+			}
+		}
+		if(exists($method_programs{"${method}_hard"}))
+		{
+			$file = $method_programs{"${method}_hard"};
+			@tmp = split(/\//,$file);
+			$program_file = pop @tmp;
+			if(-e "$install_dir/bin/$program_file")
+			{
+				print "$install_dir/bin/$program_file <target id> <fasta> <output-directory>\n\n";
+				print "\t** Example: $install_dir/bin/$program_file T0993s2 $install_dir/examples/T0993s2.fasta $install_dir/test_out/T0993s2_${method}_hard\n\n";
+			}
+		}
+		
+		if($method eq 'dncon2')
+		{
+			$python_env = 1;
+			$boost_enable = 1;
+		}
+	}
 	
 
 }
-print "#########  Configuring examples, done\n\n\n";
 
 system("chmod +x $install_dir/installation/MULTICOM_test_codes/*sh");
 
 system("cp $install_dir/src/run_multicom.sh $install_dir/bin/run_multicom.sh");
 system("chmod +x $install_dir/bin/*.sh");
+
 
 
 

@@ -123,7 +123,7 @@ foreach $db (@basic_db)
 print("\n#### (2) Download basic tools\n\n");
 
 chdir($tools_dir);
-$basic_tools_list = "blast-2.2.17.tar.gz;blast-2.2.20.tar.gz;blast-2.2.25.tar.gz;modeller-9.16.tar.gz;tm_score2.tar.gz;tm_align2.tar.gz;clustalw1.83.tar.gz;mmseqs2.tar.gz";
+$basic_tools_list = "blast-2.2.17.tar.gz;blast-2.2.20.tar.gz;blast-2.2.25.tar.gz;modeller-9.16.tar.gz;tm_score2.tar.gz;tm_align2.tar.gz;clustalw1.83.tar.gz;mmseqs2.tar.gz;boost_1_55_0.tar.gz;OpenBLAS.tar.gz;scwrl4.tar.gz;DNCON2.tar.gz";
 @basic_tools = split(';',$basic_tools_list);
 foreach $tool (@basic_tools)
 {
@@ -175,35 +175,6 @@ if(-e "uniref90.pal")
 
 }
 
-#### (3) Download uniref50
-print("\n#### (4) Download uniref50\n\n");
-$uniref_dir = "$multicom_db_tools_dir/databases/uniref";
-if(!(-d "$uniref_dir"))
-{
-	`mkdir $uniref_dir`;
-}
-chdir($uniref_dir);
-
-if(-e "uniref50.pal")
-{
-	print "\tuniref50 has been formatted, skip!\n";
-}elsif(-e "uniref50.fasta")
-{
-	print "\tuniref50.fasta is found, start formating......\n";
-	`$tools_dir/blast-2.2.25/bin/formatdb -i uniref50.fasta -o T -t uniref50 -n uniref50`;
-}else{
-	`wget ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref50/uniref50.fasta.gz`;
-	if(-e "uniref50.fasta.gz")
-	{
-		print "\tuniref50.fasta.gz is found, start extracting files......\n";
-	}else{
-		die "Failed to download uniref50.fasta.gz from ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref50/\n";
-	}
-	`gzip -d uniref50.fasta.gz`;
-	`$tools_dir/blast-2.2.25/bin/formatdb -i uniref50.fasta -o T -t uniref50 -n uniref50`;
-
-}
-
 #### (4) Generating uniref70
 print("\n#### (4) Generating uniref70\n\n");
 chdir($uniref_dir);
@@ -234,9 +205,38 @@ if(-e "uniref70.pal")
 }
 
 
+=pod
+#### (5) Download uniref50
+print("\n#### (5) Download uniref50\n\n");
+$uniref_dir = "$multicom_db_tools_dir/databases/uniref";
+if(!(-d "$uniref_dir"))
+{
+	`mkdir $uniref_dir`;
+}
+chdir($uniref_dir);
 
-#### (5) Generating uniref20
-print("\n#### (5) Generating uniref20\n\n");
+if(-e "uniref50.pal")
+{
+	print "\tuniref50 has been formatted, skip!\n";
+}elsif(-e "uniref50.fasta")
+{
+	print "\tuniref50.fasta is found, start formating......\n";
+	`$tools_dir/blast-2.2.25/bin/formatdb -i uniref50.fasta -o T -t uniref50 -n uniref50`;
+}else{
+	`wget ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref50/uniref50.fasta.gz`;
+	if(-e "uniref50.fasta.gz")
+	{
+		print "\tuniref50.fasta.gz is found, start extracting files......\n";
+	}else{
+		die "Failed to download uniref50.fasta.gz from ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref50/\n";
+	}
+	`gzip -d uniref50.fasta.gz`;
+	`$tools_dir/blast-2.2.25/bin/formatdb -i uniref50.fasta -o T -t uniref50 -n uniref50`;
+
+}
+
+#### (6) Generating uniref20
+print("\n#### (6) Generating uniref20\n\n");
 chdir($uniref_dir);
 
 if(-e "uniref20.pal")
@@ -263,7 +263,7 @@ if(-e "uniref20.pal")
 	`$tools_dir/blast-2.2.25/bin/formatdb -i uniref20.fasta -o T -t uniref20 -n uniref20`;
 
 }
-
+=cut
 
 #### (6) Linking databases
 print("\n#### (6) Linking databases\n\n");
@@ -272,7 +272,7 @@ print("\n#### (6) Linking databases\n\n");
 
 -d "$database_dir/nr_latest" || `mkdir $database_dir/nr_latest`;
 -d "$database_dir/nr70_90" || `mkdir $database_dir/nr70_90`;
--d "$database_dir/nr20" ||  `mkdir $database_dir/nr20`;
+#-d "$database_dir/nr20" ||  `mkdir $database_dir/nr20`;
 
 opendir(DBDIR,"$uniref_dir") || die "Failed to open $uniref_dir\n";
 @files = readdir(DBDIR);
@@ -378,7 +378,7 @@ foreach $file (@files)
 		}
 		
 	}
-	
+=pod
 	if(substr($file,0,9) eq 'uniref20.')
 	{
 		$subfix = substr($file,9);
@@ -409,6 +409,7 @@ foreach $file (@files)
 			`ln -s $uniref_dir/$file $database_dir/nr20/nr20.$subfix`;
 		}
 	}
+=cut
 }
 
 #### (7) Setting up tools and databases for methods
@@ -458,7 +459,7 @@ if(!(-e $method_file) or !(-e $method_info))
 		}
 		if(exists($method_db_tools{"${method}_tools"}) and exists($method_db_tools{"${method}_databases"}))
 		{
-			print "\tSetting for method <$method>\n";
+			print "\n\tSetting for method <$method>\n\n";
 			### tools
 			chdir($tools_dir);
 			$basic_tools_list = $method_db_tools{"${method}_tools"};
@@ -476,6 +477,18 @@ if(!(-e $method_file) or !(-e $method_info))
 				{
 					print "\n\t\t$tool is found, start extracting files......\n\n";
 					`tar -zxf $tool`;
+					
+					if($tool eq 'ffas_soft.tar.gz')
+					{
+						chdir("$tools_dir/$toolname/blast/db/");
+						if(!(-e "nr85s.tar.gz"))
+						{
+							die "!!!! Failed to find nr85s.tar.gz in <$tools_dir/$toolname/blast/db/>, please contact us\n\n";
+						}
+						`tar -zxf nr85s.tar.gz`;
+						
+					}
+					chdir($tools_dir);
 					`echo 'done' > $toolname/download.done`;
 					`rm $tool`;
 				}else{
@@ -489,6 +502,102 @@ if(!(-e $method_file) or !(-e $method_info))
 			@basic_db = split(';',$basic_db_list);
 			foreach $db (@basic_db)
 			{
+				if($db eq 'uniprot20/uniprot20_2016_02')
+				{
+					
+					chdir("$database_dir/$db");
+					
+					
+					$uniprot20_dir = "$multicom_db_tools_dir/databases/uniprot20/";
+					if(-e "$uniprot20_dir/uniprot20_2016_02/download.done" and -e "$uniprot20_dir/uniprot20_2016_02/uniprot20_2016_02_hhm_db" )
+					{
+						print "\t\t$db is done!\n";
+						next;
+					}
+					
+					-d $uniprot20_dir || `mkdir $uniprot20_dir/`;;
+					chdir($uniprot20_dir);
+					
+					if(-e "uniprot20_2016_02/uniprot20_2016_02_hhm.ffdata")
+					{
+						print "\t\tuniprot20_2016_02 has been downloaded, skip!\n";
+						`echo 'done' > uniprot20_2016_02/download.done`;
+					
+					}else{
+						print("\n\t\t#### Download uniprot20\n\n");
+						`wget http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/old-releases/uniprot20_2016_02.tgz`;
+						if(-e "uniprot20_2016_02.tgz")
+						{
+							print "\t\tuniprot20_2016_02.tgz is found, start extracting files......\n";
+							`tar -xf uniprot20_2016_02.tgz`;
+							`echo 'done' > uniprot20_2016_02/download.done`;
+							`rm uniprot20_2016_02.tgz`;
+						}else{
+							die "Failed to download uniprot20_2016_02.tgz from http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/old-releases/\n";
+						}
+
+					}
+					chdir("$uniprot20_dir/uniprot20_2016_02/");
+					if(-l "uniprot20_2016_02_a3m_db")
+					{
+						`rm uniprot20_2016_02_a3m_db`; 
+						`rm uniprot20_2016_02_hhm_db`; 
+					}
+				
+					`ln -s uniprot20_2016_02_a3m.ffdata uniprot20_2016_02_a3m_db`;
+					`ln -s uniprot20_2016_02_hhm.ffdata uniprot20_2016_02_hhm_db`;
+					
+					next;
+				}
+				
+				if($db eq 'uniprot30/uniclust30_2017_10')
+				{
+					
+					chdir("$database_dir/$db");
+					
+					
+					$uniprot30_dir = "$multicom_db_tools_dir/databases/uniprot30/";
+					if(-e "$uniprot30_dir/uniclust30_2017_10/download.done" and -e "$uniprot30_dir/uniclust30_2017_10/uniclust30_2017_10_hhm_db" )
+					{
+						print "\t\t$db is done!\n";
+						next;
+					}
+					
+					-d $uniprot30_dir || `mkdir $uniprot30_dir/`;;
+					chdir($uniprot30_dir);
+					
+					if(-e "uniclust30_2017_10/uniclust30_2017_10_hhm.ffdata")
+					{
+						print "\t\tuniclust30_2017_10 has been downloaded, skip!\n";
+						`echo 'done' > uniclust30_2017_10/download.done`;
+					
+					}else{
+						print("\n\t\t#### Download uniprot30\n\n");
+						`wget http://wwwuser.gwdg.de/~compbiol/uniclust/2017_10/uniclust30_2017_10_hhsuite.tar.gz`;
+						if(-e "uniclust30_2017_10_hhsuite.tar.gz")
+						{
+							print "\t\tuniclust30_2017_10_hhsuite.tar.gz is found, start extracting files......\n";
+							`tar -zxf uniclust30_2017_10_hhsuite.tar.gz`;
+							`echo 'done' > uniclust30_2017_10/download.done`;
+							`rm uniclust30_2017_10_hhsuite.tar.gz`;
+						}else{
+							die "Failed to download uniclust30_2017_10_hhsuite.tar.gz from http://wwwuser.gwdg.de/~compbiol/uniclust/2017_10/\n";
+						}
+					}
+					chdir("$uniprot30_dir/uniclust30_2017_10/");
+					if(-l "uniclust30_2017_10_a3m_db")
+					{
+						`rm uniclust30_2017_10_a3m_db`; 
+						`rm uniclust30_2017_10_hhm_db`; 
+					}
+				
+					`ln -s uniclust30_2017_10_a3m.ffdata uniclust30_2017_10_a3m_db`;
+					`ln -s uniclust30_2017_10_hhm.ffdata uniclust30_2017_10_hhm_db`;
+					
+					next;
+				}
+				
+				
 				$dbname = substr($db,0,index($db,'.tar.gz'));
 				if(-e "$database_dir/$dbname/download.done")
 				{
@@ -507,6 +616,92 @@ if(!(-e $method_file) or !(-e $method_info))
 				}
 			}
 			
+			
+			#### link raptox NR database 
+			if($method eq 'raptorx')
+			{
+				$raptorx_nr = "$tools_dir/RaptorX4/CNFsearch1.66/databases/NR_new/";
+				if(!(-d $raptorx_nr))
+				{
+					next;
+				}
+				$uniref_dir = "$multicom_db_tools_dir/databases/uniref";
+				chdir($uniref_dir);
+				opendir(DBDIR,"$uniref_dir") || die "Failed to open $uniref_dir\n";
+				@files = readdir(DBDIR);
+				closedir(DBDIR);
+				foreach $file (@files)
+				{
+					if($file eq '.' or $file eq '..')
+					{
+						next;
+					}
+					
+					if(substr($file,0,9) eq 'uniref90.')
+					{
+						$subfix = substr($file,9);
+						if(-l "$raptorx_nr/nr90.$subfix")
+						{
+							`rm $raptorx_nr/nr90.$subfix`; 
+						}
+						if($subfix eq 'pal')
+						{
+							## change to nr90
+							open(TMP,"$uniref_dir/$file");
+							open(TMPOUT,">$raptorx_nr/nr90.pal");
+							while(<TMP>)
+							{
+								$li=$_;
+								chomp $li;
+								if(index($li,'uniref90')>=0)
+								{
+									$li =~ s/uniref90/nr90/g;
+									print TMPOUT "$li\n";
+								}else{
+									print TMPOUT "$li\n";
+								}
+							}
+							close TMP;
+							close TMPOUT;
+						}else{
+							`ln -s $uniref_dir/$file $raptorx_nr/nr90.$subfix`;
+						}
+					}
+					
+					if(substr($file,0,9) eq 'uniref70.')
+					{
+						$subfix = substr($file,9);
+						if(-l "$raptorx_nr/nr70.$subfix")
+						{
+							`rm $raptorx_nr/nr70.$subfix`; 
+						}
+						if($subfix eq 'pal')
+						{
+							## change to nr90
+							open(TMP,"$uniref_dir/$file");
+							open(TMPOUT,">$raptorx_nr/nr70.pal");
+							while(<TMP>)
+							{
+								$li=$_;
+								chomp $li;
+								if(index($li,'uniref70')>=0)
+								{
+									$li =~ s/uniref70/nr70/g;
+									print TMPOUT "$li\n";
+								}else{
+									print TMPOUT "$li\n";
+								}
+							}
+							close TMP;
+							close TMPOUT;
+						}else{
+							`ln -s $uniref_dir/$file $raptorx_nr/nr70.$subfix`;
+						}
+						
+					}
+				}
+			}
+			
 		}else{
 			print "Failed to find database/tool definition for method $method\n";
 		}
@@ -514,62 +709,6 @@ if(!(-e $method_file) or !(-e $method_info))
 }
 
 
-
-
-=pod
-
-## optional for hhsuite
-#### (4) Download uniprot30
-print("\n#### (4) Download uniprot30\n\n");
-$uniprot30_dir = "$multicom_db_tools_dir/databases/uniprot30";
-if(!(-d "$uniprot30_dir"))
-{
-	`mkdir $uniprot30_dir`;
-}
-chdir($uniprot30_dir);
-
-if(-e "uniclust30_2017_10/uniclust30_2017_10_hhm.ffdata")
-{
-	print "\tuniclust30_2017_10 has been downloaded, skip!\n";
-}else{
-	`wget http://wwwuser.gwdg.de/~compbiol/uniclust/2017_10/uniclust30_2017_10_hhsuite.tar.gz`;
-	if(-e "uniclust30_2017_10_hhsuite.tar.gz")
-	{
-		print "\tuniclust30_2017_10_hhsuite.tar.gz is found, start extracting files......\n";
-		`tar -zxf uniclust30_2017_10_hhsuite.tar.gz`;
-		`rm uniclust30_2017_10_hhsuite.tar.gz`;
-	}else{
-		die "Failed to download uniclust30_2017_10_hhsuite.tar.gz from http://wwwuser.gwdg.de/~compbiol/uniclust/2017_10/\n";
-	}
-
-}
-
-
-#### (5) Download uniprot20
-print("\n#### (5) Download uniprot20\n\n");
-$uniprot20_dir = "$multicom_db_tools_dir/databases/uniprot20";
-if(!(-d "$uniprot20_dir"))
-{
-	`mkdir $uniprot20_dir`;
-}
-chdir($uniprot20_dir);
-
-if(-e "uniprot20_2016_02/uniprot20_2016_02_hhm.ffdata")
-{
-	print "\tuniprot20_2016_02 has been downloaded, skip!\n";
-}else{
-	`wget http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/old-releases/uniprot20_2016_02.tgz`;
-	if(-e "uniprot20_2016_02.tgz")
-	{
-		print "\tuniprot20_2016_02.tgz is found, start extracting files......\n";
-		`tar -xf uniprot20_2016_02.tgz`;
-		`rm uniprot20_2016_02.tgz`;
-	}else{
-		die "Failed to download uniprot20_2016_02.tgz from http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/old-releases/\n";
-	}
-
-}
-=cut
 
 print "\n\n";
 

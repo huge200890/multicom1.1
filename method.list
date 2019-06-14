@@ -14,61 +14,52 @@ hhsuite
 #hhsuite3
 
 ### method 5
-#hmmer
+hmmer
 
 ### method 6
-#hmmer3
+hmmer3
 
 ### method 7
-#hhblits
+hhblits
 
 ### method 8
-#hhblits3
+hhblits3
 
 ### method 9
 hhpred
 
 ### method 10
-#ffas
+ffas
 
 ### method 11
-#compass
+compass
 
 ### method 12
-#blast
+blast
 
 ### method 13
-#newblast
+newblast
 
 ### method 14
-#csblast
+csblast
 
 ### method 15
-#csiblast
+csiblast
 
 ### method 16
-#psiblast
+psiblast
 
 ### method 17
-#sam
+sam
 
 ### method 18
-#prc
-
-### method 19
-#msa
-
-### method 20
-#multicom
-
-### method 21
-#construct
+prc
 
 ### method 22
-#raptorx
+raptorx
 
 ### method 23
-#muster
+muster
 
 ### method 24
 #novel
@@ -77,13 +68,16 @@ hhpred
 #deepsf
 
 ### method 26
-#confold
+confold
 
 ### method 27
-#rosettacon
+rosettacon
 
 ### method 28
 #unicon3d
 
 ### method 29
-#rosetta
+rosetta
+
+### method 30
+dncon2
