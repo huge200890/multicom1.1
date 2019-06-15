@@ -1,0 +1,4 @@
+working dir: /home/jh7x3/multicom_beta1.0/test_out/T1006_unicon3d_061519/unicon3d
+Generate models using UniCon3D...
+perl /home/jh7x3/multicom_beta1.0/tools/UniCon3D//run_Unicon3D_withdncon2.pl T1006 /home/jh7x3/multicom_beta1.0/test_out/T1006_unicon3d_061519/unicon3d/T1006.fasta Unicon3D_option /home/jh7x3/multicom_beta1.0/test_out/T1006_unicon3d_061519/unicon3d None &> run_Unicon3D.log
+

@@ -1,0 +1,8 @@
+Generate models using Rosetta with contacts...
+Setting contact file to None
+perl /home/jh7x3/multicom_beta1.0/src/meta/rosettacon/dncon2-Rosetta/scripts/run_CASP13_rosetta_withcontact_LongMediumShortLby5.pl T1006   /home/jh7x3/multicom_beta1.0/examples/T1006.fasta  /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon  None /tmp 3.5 8 1
+Name "main::rosetta_install_dir" used only once: possible typo at /home/jh7x3/multicom_beta1.0/src/meta/rosettacon/dncon2-Rosetta/scripts/run_CASP13_rosetta_withcontact_LongMediumShortLby5.pl line 30.
+No contact file is found, need regenerate!
+1. generating dncon2 score
+   /home/jh7x3/multicom_beta1.0/tools/DNCON2/dncon2-v1.0.sh  /home/jh7x3/multicom_beta1.0/examples/T1006.fasta  /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/dncon2 
+

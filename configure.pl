@@ -664,7 +664,7 @@ if(!(-e $method_file) or !(-e $option_list))
 			if(-e "$install_dir/bin/$program_file")
 			{
 				print "$install_dir/bin/$program_file <target id> <fasta> <output-directory>\n\n";
-				print "\t** Example: $install_dir/bin/$program_file T0993s2 $install_dir/examples/T0993s2.fasta $install_dir/test_out/T0993s2_$method\n\n";
+				print "\t** Example: $install_dir/bin/$program_file T1006 $install_dir/examples/T1006.fasta $install_dir/test_out/T1006_$method\n\n";
 			}
 			
 		}
@@ -676,7 +676,7 @@ if(!(-e $method_file) or !(-e $option_list))
 			if(-e "$install_dir/bin/$program_file")
 			{
 				print "$install_dir/bin/$program_file <target id> <fasta> <output-directory>\n\n";
-				print "\t** Example: $install_dir/bin/$program_file T0993s2 $install_dir/examples/T0993s2.fasta $install_dir/test_out/T0993s2_$method\n\n";
+				print "\t** Example: $install_dir/bin/$program_file T1006 $install_dir/examples/T1006.fasta $install_dir/test_out/T1006_$method\n\n";
 			}
 		}
 		if(exists($method_programs{"${method}_hard"}))
@@ -687,7 +687,7 @@ if(!(-e $method_file) or !(-e $option_list))
 			if(-e "$install_dir/bin/$program_file")
 			{
 				print "$install_dir/bin/$program_file <target id> <fasta> <output-directory>\n\n";
-				print "\t** Example: $install_dir/bin/$program_file T0993s2 $install_dir/examples/T0993s2.fasta $install_dir/test_out/T0993s2_${method}_hard\n\n";
+				print "\t** Example: $install_dir/bin/$program_file T1006 $install_dir/examples/T1006.fasta $install_dir/test_out/T1006_${method}_hard\n\n";
 			}
 		}
 		

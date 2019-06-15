@@ -24,19 +24,20 @@ then
    exit
 fi
 
-mkdir -p $outputdir/sam
+mkdir -p $outputdir/hhsuite3
 
 cd $outputdir
-perl SOFTWARE_PATH/src/meta/sam/script/tm_sam_main_v2.pl SOFTWARE_PATH/src/meta/sam/sam_option_nr $fastafile sam  2>&1 | tee  SOFTWARE_PATH/test_out/T1006_sam_$dtime.log
+
+perl /home/jh7x3/multicom_beta1.0/src/meta/hhsuite3/script/tm_hhsuite3_main.pl /home/jh7x3/multicom_beta1.0/src/meta/hhsuite3/hhsuite3_option $fastafile hhsuite3  2>&1 | tee  hhsuite3.log
 
 printf "\nFinished.."
-printf "\nCheck log file <$outputdir/sam.log>\n\n"
+printf "\nCheck log file <$outputdir/hhsuite3.log>\n\n"
 
 
-if [[ ! -f "$outputdir/sam/sam1.pdb" ]];then 
-	printf "!!!!! Failed to run sam, check the installation <SOFTWARE_PATH/src/meta/sam/>\n\n"
+if [[ ! -f "$outputdir/hhsuite3/hhsu1.pdb" ]];then 
+	printf "!!!!! Failed to run hhsuite3, check the installation </home/jh7x3/multicom_beta1.0/src/meta/hhsuite3/>\n\n"
 else
 	printf "\nJob successfully completed!"
-	cp $outputdir/sam/sam1.pdb $outputdir/$targetid.pdb 
+	cp $outputdir/hhsuite3/hhsu1.pdb $outputdir/$targetid.pdb 
 	printf "\nResults: $outputdir/$targetid.pdb\n\n"
 fi

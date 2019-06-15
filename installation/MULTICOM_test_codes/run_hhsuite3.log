@@ -1,0 +1,13 @@
+working dir: /home/jh7x3/multicom_beta1.0/test_out/T1006_hhsuite3_061519/hhsuite3
+Generate alignments from the nr database using hhblits...
+/home/jh7x3/multicom_beta1.0/tools/hhsuite-3.0-beta.1//bin/hhblits -i T1006.fasta -d /home/jh7x3/multicom_beta1.0/databases/uniprot30/uniclust30_2017_10/uniclust30_2017_10 -oa3m T1006.a3m -n 3
+- 16:34:52.654 INFO: Search results will be written to T1006.hhr
+
+- 16:35:54.512 INFO: Searching 13605227 column state sequences.
+
+- 16:35:55.307 INFO: T1006.fasta is in A2M, A3M or FASTA format
+
+- 16:35:55.308 INFO: Iteration 1
+
+- 16:35:55.366 INFO: Prefiltering database
+

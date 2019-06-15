@@ -11,7 +11,7 @@ hhsearch151
 hhsuite
 
 ### method 5
-#hhsuite3
+hhsuite3
 
 ### method 5
 hmmer
@@ -62,10 +62,10 @@ raptorx
 muster
 
 ### method 24
-#novel
+novel
 
 ### method 25
-#deepsf
+deepsf
 
 ### method 26
 confold
@@ -74,7 +74,7 @@ confold
 rosettacon
 
 ### method 28
-#unicon3d
+unicon3d
 
 ### method 29
 rosetta

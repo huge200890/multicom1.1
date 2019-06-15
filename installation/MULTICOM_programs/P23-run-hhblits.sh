@@ -27,7 +27,7 @@ fi
 mkdir -p $outputdir/hhblits
 
 cd $outputdir
-perl /home/jh7x3/multicom_beta1.0/src/meta/hhblits/script/tm_hhblits_main.pl /home/jh7x3/multicom_beta1.0/src/meta/hhblits/hhblits_option /home/jh7x3/multicom_beta1.0/examples/T0993s2.fasta hhblits  2>&1 | tee  hhblits.log
+perl /home/jh7x3/multicom_beta1.0/src/meta/hhblits/script/tm_hhblits_main.pl /home/jh7x3/multicom_beta1.0/src/meta/hhblits/hhblits_option /home/jh7x3/multicom_beta1.0/examples/T1006.fasta hhblits  2>&1 | tee  hhblits.log
 perl /home/jh7x3/multicom_beta1.0/src/meta/hhblits/script/filter_identical_hhblits.pl hhblits
 
 printf "\nFinished.."

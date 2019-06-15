@@ -95,7 +95,7 @@ ffas:installation/MULTICOM_programs/P26-run-ffas.sh
 confold:installation/MULTICOM_programs/P27-run-confold.sh
 
 # unicon3d
-unicon3d:installation/MULTICOM_programs/T28-run-unicon3d.sh
+unicon3d:installation/MULTICOM_programs/P28-run-unicon3d.sh
 
 # rosetta
 rosetta:installation/MULTICOM_programs/P29-run-rosetta.sh
@@ -104,10 +104,10 @@ rosetta:installation/MULTICOM_programs/P29-run-rosetta.sh
 rosettacon:installation/MULTICOM_programs/P30-run-rosettacon.sh
 
 # deepsf
-deepsf:installation/MULTICOM_programs/T31-run-deepsf.sh
+deepsf:installation/MULTICOM_programs/P31-run-deepsf.sh
 
 # novel
-novel:installation/MULTICOM_programs/T32-run-novel.sh
+novel:installation/MULTICOM_programs/P32-run-novel.sh
 
 
 # fusioncon

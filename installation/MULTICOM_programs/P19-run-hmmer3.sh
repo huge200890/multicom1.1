@@ -27,7 +27,7 @@ fi
 mkdir -p $outputdir/hmmer3
 
 cd $outputdir
-perl /home/jh7x3/multicom_beta1.0/src/meta/hmmer3/script/tm_hmmer3_main.pl /home/jh7x3/multicom_beta1.0/src/meta/hmmer3/hmmer3_option /home/jh7x3/multicom_beta1.0/examples/T0993s2.fasta hmmer3  2>&1 | tee  hmmer3.log
+perl /home/jh7x3/multicom_beta1.0/src/meta/hmmer3/script/tm_hmmer3_main.pl /home/jh7x3/multicom_beta1.0/src/meta/hmmer3/hmmer3_option /home/jh7x3/multicom_beta1.0/examples/T1006.fasta hmmer3  2>&1 | tee  hmmer3.log
 
 
 printf "\nFinished.."
