@@ -1,9 +1,0 @@
-C;cover size:80; local alignment length=80 (original info = 3oiz_A	99	82.79	1.2e-12	0)
->P1;3OIZA
-structureX:3oiz_A:19:A:92:A: : : : 
-------------------------IYRVEGQLFYASVEDFMAAFDFREALDRVVIDVSRAHIWDISSVQALDMAVLKFRREGAEVRIVGMNEASETMV------------*
-
-C;query_length:109 num_of_temps:1 cover_ratio:0.73 cover:80 not_cover:29
->P1;T0993s2
- : : : : : : : : : 
-MHHHHHHENLYFQSESLSWMQTGDTLALSGELDQDVLLPLWEMREEAVK-GITCIDLSRVSRVDTGGLALLLHLIDLAKKQGNNVTLQGVNDKVYTLAKLYNLPADVLPR*

@@ -1,9 +1,0 @@
-C;cover size:80; local alignment length=80 (original info = 3lkl_A	98	82.17	1.2e-12	1)
->P1;3LKLA
-structureX:3lkl_A:17:A:93:A: : : : 
-------------------------TYRVEGQLFYGSVEDFMAAFDFREPLERVTIDVSRAHIWDISSVQALDMAVLKFRREGAEVRIVGMNEASETLVDRL---------*
-
-C;query_length:109 num_of_temps:1 cover_ratio:0.73 cover:80 not_cover:29
->P1;T0993s2
- : : : : : : : : : 
-MHHHHHHENLYFQSESLSWMQTGDTLALSGELDQDVLLPLWEMREEAVK-GITCIDLSRVSRVDTGGLALLLHLIDLAKKQGNNVTLQGVNDKVYTLAKLYNLPADVLPR*
