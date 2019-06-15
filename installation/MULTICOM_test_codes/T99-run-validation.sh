@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /home/jh7x3/multicom_v1.1/test_out/ 
-perl /home/jh7x3/multicom_v1.1/installation/scripts/validate_predictions.pl  T0993s2  /home/jh7x3/multicom_v1.1/test_out/ /home/jh7x3/multicom_v1.1/installation/benchmark
+cd /home/jh7x3/multicom_beta1.0/test_out/ 
+perl /home/jh7x3/multicom_beta1.0/installation/scripts/validate_predictions.pl  T1006  /home/jh7x3/multicom_beta1.0/test_out/ /home/jh7x3/multicom_beta1.0/installation/benchmark

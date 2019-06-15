@@ -27,15 +27,15 @@ fi
 mkdir -p $outputdir/muster
 
 cd $outputdir
-perl /home/jh7x3/multicom_v1.1/src/meta/muster/script/tm_muster_main.pl /home/jh7x3/multicom_v1.1/src/meta/muster/muster_option_version4 $fastafile muster  2>&1 | tee  muster.log
-perl /home/jh7x3/multicom_v1.1/src/meta/muster/script/filter_identical_muster.pl muster
+perl /home/jh7x3/multicom_beta1.0/src/meta/muster/script/tm_muster_main.pl /home/jh7x3/multicom_beta1.0/src/meta/muster/muster_option_version4 $fastafile muster  2>&1 | tee  muster.log
+perl /home/jh7x3/multicom_beta1.0/src/meta/muster/script/filter_identical_muster.pl muster
 
 printf "\nFinished.."
 printf "\nCheck log file <$outputdir/muster.log>\n\n"
 
 
 if [[ ! -f "$outputdir/muster/muster1.pdb" ]];then 
-	printf "!!!!! Failed to run muster, check the installation </home/jh7x3/multicom_v1.1/src/meta/muster/>\n\n"
+	printf "!!!!! Failed to run muster, check the installation </home/jh7x3/multicom_beta1.0/src/meta/muster/>\n\n"
 else
 	printf "\nJob successfully completed!"
 	cp $outputdir/muster/muster1.pdb $outputdir/$targetid.pdb 

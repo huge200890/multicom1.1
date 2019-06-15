@@ -4,7 +4,7 @@
 #Inputs: option file, query file(fasta), output dir
 #New version: starte date: 1/10/2009
 #########################################################################
-$GLOBAL_PATH="/home/jh7x3/multicom_v1.1/";
+$GLOBAL_PATH="/home/jh7x3/multicom_beta1.0/";
 
 #####################Read Input Parameters###################################
 if (@ARGV != 3)

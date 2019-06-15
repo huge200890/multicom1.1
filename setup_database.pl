@@ -106,7 +106,7 @@ foreach $db (@basic_db)
 		print "\t$dbname is done!\n";
 		next;
 	}
-	`wget http://sysbio.rnet.missouri.edu/bdm_download/multicom/databases/$db`;
+	`wget http://sysbio.rnet.missouri.edu/multicom_db_tools/databases/$db`;
 	if(-e "$db")
 	{
 		print "\t$db is found, start extracting files......\n\n";
@@ -114,7 +114,7 @@ foreach $db (@basic_db)
 		`echo 'done' > $dbname/download.done`;
 		`rm $db`;
 	}else{
-		die "Failed to download $db from http://sysbio.rnet.missouri.edu/bdm_download/multicom/databases, please contact chengji\@missouri.edu\n";
+		die "Failed to download $db from http://sysbio.rnet.missouri.edu/multicom_db_tools/databases, please contact chengji\@missouri.edu\n";
 	}
 }
 
@@ -133,7 +133,7 @@ foreach $tool (@basic_tools)
 		print "\t$toolname is done!\n";
 		next;
 	}
-	`wget http://sysbio.rnet.missouri.edu/bdm_download/multicom/tools/$tool`;
+	`wget http://sysbio.rnet.missouri.edu/multicom_db_tools/tools/$tool`;
 	if(-e "$tool")
 	{
 		print "\n\t$tool is found, start extracting files......\n\n";
@@ -141,7 +141,7 @@ foreach $tool (@basic_tools)
 		`echo 'done' > $toolname/download.done`;
 		`rm $tool`;
 	}else{
-		die "Failed to download $tool from http://sysbio.rnet.missouri.edu/bdm_download/multicom/tools, please contact chengji\@missouri.edu\n";
+		die "Failed to download $tool from http://sysbio.rnet.missouri.edu/multicom_db_tools/tools, please contact chengji\@missouri.edu\n";
 	}
 }
 
@@ -472,7 +472,7 @@ if(!(-e $method_file) or !(-e $method_info))
 					print "\t\t$toolname is done!\n";
 					next;
 				}
-				`wget http://sysbio.rnet.missouri.edu/bdm_download/multicom/tools/$tool`;
+				`wget http://sysbio.rnet.missouri.edu/multicom_db_tools/tools/$tool`;
 				if(-e "$tool")
 				{
 					print "\n\t\t$tool is found, start extracting files......\n\n";
@@ -492,7 +492,7 @@ if(!(-e $method_file) or !(-e $method_info))
 					`echo 'done' > $toolname/download.done`;
 					`rm $tool`;
 				}else{
-					die "Failed to download $tool from http://sysbio.rnet.missouri.edu/bdm_download/multicom/tools, please contact chengji\@missouri.edu\n";
+					die "Failed to download $tool from http://sysbio.rnet.missouri.edu/multicom_db_tools/tools, please contact chengji\@missouri.edu\n";
 				}
 			}
 			
@@ -604,7 +604,7 @@ if(!(-e $method_file) or !(-e $method_info))
 					print "\t\t$dbname is done!\n";
 					next;
 				}
-				`wget http://sysbio.rnet.missouri.edu/bdm_download/multicom/databases/$db`;
+				`wget http://sysbio.rnet.missouri.edu/multicom_db_tools/databases/$db`;
 				if(-e "$db")
 				{
 					print "\t\t$db is found, start extracting files......\n\n";
@@ -612,7 +612,7 @@ if(!(-e $method_file) or !(-e $method_info))
 					`echo 'done' > $dbname/download.done`;
 					`rm $db`;
 				}else{
-					die "Failed to download $db from http://sysbio.rnet.missouri.edu/bdm_download/multicom/databases, please contact chengji\@missouri.edu\n";
+					die "Failed to download $db from http://sysbio.rnet.missouri.edu/multicom_db_tools/databases, please contact chengji\@missouri.edu\n";
 				}
 			}
 			

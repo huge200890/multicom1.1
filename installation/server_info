@@ -23,11 +23,11 @@ blast_databases:cm_lib.tar.gz;atom.tar.gz;
 
 
 #### template identification using rosettacon
-rosettacon_tools:rosetta_bin_linux_2018.09.60072_bundle.tar.gz;DNCON2.tar.gz;blast-2.2.17.tar.gz;modeller-9.16.tar.gz;tm_score2.tar.gz;tm_align2.tar.gz;clustalw1.83.tar.gz;hhsuite-2.0.8-linux-x86_64.tar.gz;hhblits.tar.gz;psipred.tar.gz;psipred-2.61.tar.gz;boost_1_55_0.tar.gz;OpenBLAS.tar.gz;
+rosettacon_tools:rosetta_bin_linux_2018.09.60072_bundle.tar.gz;DNCON2.tar.gz;blast-2.2.17.tar.gz;modeller-9.16.tar.gz;tm_score2.tar.gz;tm_align2.tar.gz;clustalw1.83.tar.gz;hhsuite-2.0.8-linux-x86_64.tar.gz;hhblits.tar.gz;psipred.tar.gz;psipred-2.61.tar.gz;boost_1_55_0.tar.gz;OpenBLAS.tar.gz;SBROD.tar.gz
 rosettacon_databases:uniprot20/uniprot20_2016_02
 
 #### template identification using unicon3d
-unicon3d_tools:UniCon3D.tar.gz;metapsicov-pipeline-2.0.tar.gz;SCRATCH-1D_1.1.tar.gz;blast-2.2.17.tar.gz;modeller-9.16.tar.gz;tm_score2.tar.gz;tm_align2.tar.gz;clustalw1.83.tar.gz;hhsuite-2.0.8-linux-x86_64.tar.gz;hhblits.tar.gz;psipred.tar.gz;psipred-2.61.tar.gz
+unicon3d_tools:UniCon3D.tar.gz;metapsicov-pipeline-2.0.tar.gz;SCRATCH-1D_1.1.tar.gz;blast-2.2.17.tar.gz;modeller-9.16.tar.gz;tm_score2.tar.gz;tm_align2.tar.gz;clustalw1.83.tar.gz;hhsuite-2.0.8-linux-x86_64.tar.gz;hhblits.tar.gz;psipred.tar.gz;psipred-2.61.tar.gz;SBROD.tar.gz
 unicon3d_databases:cm_lib.tar.gz;atom.tar.gz;
 
 
@@ -132,7 +132,7 @@ dncon2_databases:uniprot20/uniprot20_2016_02
 
 
 #### Ab initio structure prediction using CONFOLD2
-confold_tools:confold2.tar.gz;boost_1_55_0.tar.gz;OpenBLAS.tar.gz;DNCON2.tar.gz;SCRATCH-1D_1.1.tar.gz;
+confold_tools:confold2.tar.gz;boost_1_55_0.tar.gz;OpenBLAS.tar.gz;DNCON2.tar.gz;SCRATCH-1D_1.1.tar.gz;CONFOLD-UNICON3D.tar.gz
 confold_databases:uniprot20/uniprot20_2016_02
 
 

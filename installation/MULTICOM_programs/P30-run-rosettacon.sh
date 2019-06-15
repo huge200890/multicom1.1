@@ -27,14 +27,14 @@ fi
 mkdir -p $outputdir/rosettacon
 
 cd $outputdir
-perl /home/jh7x3/multicom_v1.1/src/meta/rosettacon/script/tm_rosettacon_main.pl /home/jh7x3/multicom_v1.1/src/meta/rosettacon/rosettacon_option $fastafile rosettacon  2>&1 | tee  rosettacon.log
+perl /home/jh7x3/multicom_beta1.0/src/meta/rosettacon/script/tm_rosettacon_main.pl /home/jh7x3/multicom_beta1.0/src/meta/rosettacon/rosettacon_option $fastafile rosettacon  2>&1 | tee  rosettacon.log
 
 printf "\nFinished.."
 printf "\nCheck log file <$outputdir/rosettacon.log>\n\n"
 
 
 if [[ ! -f "$outputdir/rosettacon/rocon1.pdb" ]];then 
-	printf "!!!!! Failed to run rosettacon, check the installation </home/jh7x3/multicom_v1.1/src/meta/rosettacon/>\n\n"
+	printf "!!!!! Failed to run rosettacon, check the installation </home/jh7x3/multicom_beta1.0/src/meta/rosettacon/>\n\n"
 else
 	printf "\nJob successfully completed!"
 	cp $outputdir/rosettacon/rocon1.pdb $outputdir/$targetid.pdb 

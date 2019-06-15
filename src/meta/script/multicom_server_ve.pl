@@ -6,7 +6,7 @@
 #Update version: 06/01/2019
 #second version: add construct predictor
 #########################################################################
-$GLOBAL_PATH="/home/jh7x3/multicom_v1.1/";
+$GLOBAL_PATH="/home/jh7x3/multicom_beta1.0/";
 
 #####################Read Input Parameters###################################
 if (@ARGV != 3)

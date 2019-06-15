@@ -28,5 +28,5 @@ mkdir -p ~/.keras
 
 cp ~/.keras/keras.json ~/.keras/keras.json.$NOW.$RANDOM
 
-cp /home/jh7x3/multicom_v1.1//installation/MULTICOM_configure_files/keras_multicom.json ~/.keras/keras.json
+cp /home/jh7x3/multicom_beta1.0//installation/MULTICOM_configure_files/keras_multicom.json ~/.keras/keras.json
 
