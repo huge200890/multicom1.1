@@ -2,3 +2,16 @@ working dir: /home/jh7x3/multicom_beta1.0/test_out/T1006_unicon3d_061519/unicon3
 Generate models using UniCon3D...
 perl /home/jh7x3/multicom_beta1.0/tools/UniCon3D//run_Unicon3D_withdncon2.pl T1006 /home/jh7x3/multicom_beta1.0/test_out/T1006_unicon3d_061519/unicon3d/T1006.fasta Unicon3D_option /home/jh7x3/multicom_beta1.0/test_out/T1006_unicon3d_061519/unicon3d None &> run_Unicon3D.log
 
+Model Unicon3d-1.pdb is generated.
+Model Unicon3d-2.pdb is generated.
+Model Unicon3d-3.pdb is generated.
+Model Unicon3d-4.pdb is generated.
+UniCon3D prediction is done.
+
+Finished..
+Check log file </home/jh7x3/multicom_beta1.0/test_out/T1006_unicon3d_061519.log>
+
+
+Job successfully completed!
+Results: /home/jh7x3/multicom_beta1.0/test_out/T1006_unicon3d_061519/unicon3d/Unicon3d-1.pdb
+

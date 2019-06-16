@@ -6,3 +6,151 @@ No contact file is found, need regenerate!
 1. generating dncon2 score
    /home/jh7x3/multicom_beta1.0/tools/DNCON2/dncon2-v1.0.sh  /home/jh7x3/multicom_beta1.0/examples/T1006.fasta  /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/dncon2 
 
+/home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/dncon2/T1006.dncon2.rr generated!
+
+1. Filtering dncon2 
+perl /home/jh7x3/multicom_beta1.0/src/meta/rosettacon/dncon2-Rosetta/scripts/convea_range_resultv2.pl -rr T1006.dncon2.rr  -fasta /home/jh7x3/multicom_beta1.0/examples/T1006.fasta  -smin 24 -smax 10000 -top L5
+
+1. Filtering dncon2 
+perl /home/jh7x3/multicom_beta1.0/src/meta/rosettacon/dncon2-Rosetta/scripts/convea_range_resultv2.pl -rr T1006.dncon2.rr  -fasta /home/jh7x3/multicom_beta1.0/examples/T1006.fasta  -smin 12 -smax 23 -top L5
+
+1. Filtering dncon2 
+perl /home/jh7x3/multicom_beta1.0/src/meta/rosettacon/dncon2-Rosetta/scripts/convea_range_resultv2.pl -rr T1006.dncon2.rr  -fasta /home/jh7x3/multicom_beta1.0/examples/T1006.fasta  -smin 6 -smax 11 -top L5
+
+2. Generating dncon2 constraints
+perl /home/jh7x3/multicom_beta1.0/src/meta/rosettacon/dncon2-Rosetta/scripts/P1_convert_dncon2constraints.pl T1006-Long-range-L5.rr.raw  /home/jh7x3/multicom_beta1.0/examples/T1006.fasta T1006.rr.longL5.contact.cst  3.5  8
+
+2. Generating dncon2 constraints
+perl /home/jh7x3/multicom_beta1.0/src/meta/rosettacon/dncon2-Rosetta/scripts/P1_convert_dncon2constraints.pl T1006-Short-range-L5.rr.raw  /home/jh7x3/multicom_beta1.0/examples/T1006.fasta T1006.rr.shortL5.contact.cst  3.5  8 
+
+2. Generating dncon2 constraints
+perl /home/jh7x3/multicom_beta1.0/src/meta/rosettacon/dncon2-Rosetta/scripts/P1_convert_dncon2constraints.pl T1006-Medium-range-L5.rr.raw  /home/jh7x3/multicom_beta1.0/examples/T1006.fasta T1006.rr.mediumL5.contact.cst 3.5  8
+
+4. Generating rosetta fragments
+/home/jh7x3/multicom_beta1.0/src/meta/script/make_rosetta_fragment.sh /home/jh7x3/multicom_beta1.0/examples/T1006.fasta abini /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006 100  &>> /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/runRosetta_LongMediumShortLby5.log
+
+5. Running rosetta with contact constraints
+/home/jh7x3/multicom_beta1.0/src/meta/rosettacon/dncon2-Rosetta/scripts/run_rosetta_no_fragment_withContact.sh /home/jh7x3/multicom_beta1.0/examples/T1006.fasta abini /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006   100 /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/T1006.rr.LongMediumShortLby5.contact.cst 1 &>> /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/runRosetta_LongMediumShortLby5.log
+
+
+6. Running clustering to select top5 models
+
+Total 100 models are found for QA analysis
+generating SBROD score
+   ./assess_protein /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/abini/*pdb &> /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/SBROD_ranking.txt 
+
+SBROD modeling finished within 0.00833333333333333 hrs!
+
+Checking /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/SBROD_ranking.txt
+/home/jh7x3/multicom_beta1.0/tools/UniCon3D/maxcluster64bit -l  /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/model.list -ms 5 -C 5 -is 20  > /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/maxcluster/T1006.maxcluster_results
+Total lines: 100 in /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/Final_ranking.txt
+Added abini-76.pdb to top 5 list
+### cp /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/abini/abini-76.pdb /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/top_models/Rosetta_dncon2-1.pdb
+Added abini-20.pdb to top 5 list
+### cp /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/abini/abini-20.pdb /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/top_models/Rosetta_dncon2-2.pdb
+Added abini-47.pdb to top 5 list
+### cp /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/abini/abini-47.pdb /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/top_models/Rosetta_dncon2-3.pdb
+Added abini-35.pdb to top 5 list
+### cp /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/abini/abini-35.pdb /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/top_models/Rosetta_dncon2-4.pdb
+Added abini-79.pdb to top 5 list
+### cp /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/abini/abini-79.pdb /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/top_models/Rosetta_dncon2-5.pdb
+Added abini-25.pdb to top 5 list
+### cp /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/abini/abini-25.pdb /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rosetta_results_T1006/top_models/Rosetta_dncon2-6.pdb
+
+Rank the 6 models selected [expected = 5] ..
+
+####### Rosetta-dncon2 modeling finished within 2.23027777777778 hrs!
+
+self remodel rocon1.pdb using Modeller...
+Can't exec "/home/jh7x3/multicom_beta1.0/tools/model_eva1.0/script/pdb2seq.pl": No such file or directory at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 16.
+Use of uninitialized value $seq in scalar chomp at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 18.
+Use of uninitialized value $length in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 27.
+Use of uninitialized value $seq in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 28.
+Use of uninitialized value $seq in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 33.
+Run Modeller version 9.16...
+Total number of templates used for initial model generation is 1.
+model 1 is not created. Errors happen.
+model 2 is not created. Errors happen.
+model 3 is not created. Errors happen.
+model 4 is not created. Errors happen.
+model 5 is not created. Errors happen.
+model 6 is not created. Errors happen.
+model 7 is not created. Errors happen.
+model 8 is not created. Errors happen.
+cp: cannot stat ‘/home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/outtmp/rocon1self.pdb’: No such file or directory
+self remodel rocon2.pdb using Modeller...
+Can't exec "/home/jh7x3/multicom_beta1.0/tools/model_eva1.0/script/pdb2seq.pl": No such file or directory at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 16.
+Use of uninitialized value $seq in scalar chomp at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 18.
+Use of uninitialized value $length in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 27.
+Use of uninitialized value $seq in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 28.
+Use of uninitialized value $seq in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 33.
+Run Modeller version 9.16...
+Total number of templates used for initial model generation is 1.
+model 1 is not created. Errors happen.
+model 2 is not created. Errors happen.
+model 3 is not created. Errors happen.
+model 4 is not created. Errors happen.
+model 5 is not created. Errors happen.
+model 6 is not created. Errors happen.
+model 7 is not created. Errors happen.
+model 8 is not created. Errors happen.
+cp: cannot stat ‘/home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/outtmp/rocon2self.pdb’: No such file or directory
+self remodel rocon3.pdb using Modeller...
+Can't exec "/home/jh7x3/multicom_beta1.0/tools/model_eva1.0/script/pdb2seq.pl": No such file or directory at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 16.
+Use of uninitialized value $seq in scalar chomp at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 18.
+Use of uninitialized value $length in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 27.
+Use of uninitialized value $seq in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 28.
+Use of uninitialized value $seq in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 33.
+Run Modeller version 9.16...
+Total number of templates used for initial model generation is 1.
+model 1 is not created. Errors happen.
+model 2 is not created. Errors happen.
+model 3 is not created. Errors happen.
+model 4 is not created. Errors happen.
+model 5 is not created. Errors happen.
+model 6 is not created. Errors happen.
+model 7 is not created. Errors happen.
+model 8 is not created. Errors happen.
+cp: cannot stat ‘/home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/outtmp/rocon3self.pdb’: No such file or directory
+self remodel rocon4.pdb using Modeller...
+Can't exec "/home/jh7x3/multicom_beta1.0/tools/model_eva1.0/script/pdb2seq.pl": No such file or directory at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 16.
+Use of uninitialized value $seq in scalar chomp at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 18.
+Use of uninitialized value $length in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 27.
+Use of uninitialized value $seq in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 28.
+Use of uninitialized value $seq in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 33.
+Run Modeller version 9.16...
+Total number of templates used for initial model generation is 1.
+model 1 is not created. Errors happen.
+model 2 is not created. Errors happen.
+model 3 is not created. Errors happen.
+model 4 is not created. Errors happen.
+model 5 is not created. Errors happen.
+model 6 is not created. Errors happen.
+model 7 is not created. Errors happen.
+model 8 is not created. Errors happen.
+cp: cannot stat ‘/home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/outtmp/rocon4self.pdb’: No such file or directory
+self remodel rocon5.pdb using Modeller...
+Can't exec "/home/jh7x3/multicom_beta1.0/tools/model_eva1.0/script/pdb2seq.pl": No such file or directory at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 16.
+Use of uninitialized value $seq in scalar chomp at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 18.
+Use of uninitialized value $length in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 27.
+Use of uninitialized value $seq in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 28.
+Use of uninitialized value $seq in concatenation (.) or string at /home/jh7x3/multicom_beta1.0/src/meta/script/self.pl line 33.
+Run Modeller version 9.16...
+Total number of templates used for initial model generation is 1.
+model 1 is not created. Errors happen.
+model 2 is not created. Errors happen.
+model 3 is not created. Errors happen.
+model 4 is not created. Errors happen.
+model 5 is not created. Errors happen.
+model 6 is not created. Errors happen.
+model 7 is not created. Errors happen.
+model 8 is not created. Errors happen.
+cp: cannot stat ‘/home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/outtmp/rocon5self.pdb’: No such file or directory
+
+Finished..
+Check log file </home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519.log>
+
+
+Job successfully completed!
+Results: /home/jh7x3/multicom_beta1.0/test_out/T1006_rosettacon_061519/rosettacon/rocon1.pdb
+

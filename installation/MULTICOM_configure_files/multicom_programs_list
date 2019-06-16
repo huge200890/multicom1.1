@@ -109,8 +109,7 @@ deepsf:installation/MULTICOM_programs/P31-run-deepsf.sh
 # novel
 novel:installation/MULTICOM_programs/P32-run-novel.sh
 
-
 # fusioncon
-fusioncon:installation/MULTICOM_programs/T34-run-fusioncon.sh
+fusioncon:installation/MULTICOM_programs/P34-run-fusioncon.sh
 
 
