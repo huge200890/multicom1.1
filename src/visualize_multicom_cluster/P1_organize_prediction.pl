@@ -27,9 +27,9 @@ if(-d "$workdir/full_length_hard")
 	$full_length_dir = 'full_length_hard';
 }
 ###### copy basic information
-if(!(-e "$workdir/$targetid.fasta"))
+if(!(-e "$workdir/full_length/hhsearch15/$targetid.fasta"))
 {
-	print "Warning: 0. Failed to find $workdir/$targetid.fasta\n";
+	print "Warning: 0. Failed to find $workdir/full_length/hhsearch15/$targetid.fasta\n";
 }else{
 	`cp $workdir/full_length/hhsearch15/$targetid.fasta $outputdir/query.fasta`;
 	`cp $workdir/full_length/hhsearch15/$targetid.fasta $outputdir/$targetid.fasta`;
