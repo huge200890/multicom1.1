@@ -23,7 +23,7 @@ b. edit setup_database.pl
 c. perl setup_database.pl
 ```
 
-Please refer to 'Methods_reference.txt' to cite the methods that you use using MULTICOM system for publication.
+Please refer to 'cite_methods_for_publication.txt' to cite the methods that you use in MULTICOM system for publication. The tools can be also downloaded from their official websites.
 
 
 **(3) Configure MULTICOM system (required)**
