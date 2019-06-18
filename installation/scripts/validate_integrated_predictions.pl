@@ -27,7 +27,7 @@ printf "%-20s\n", 'Difference (GDT-TS)';
 
 foreach $file (sort @files)
 {
-	if($file eq '.' or $file eq '..' or or substr($file,length($file)-4) ne '.pdb')
+	if($file eq '.' or $file eq '..' or substr($file,length($file)-4) ne '.pdb')
 	{
 		next;
 	}	
@@ -47,7 +47,7 @@ foreach $file (sort @files)
 	($gdttsscore1,$rmsd1) = cal_sim($predict_file,$native_file);
 	$avg_gdt_predict += $gdttsscore1;
 	
-	($gdttsscore2,$rmsd1) = cal_sim($benchmark_file,$native_file);
+	($gdttsscore2,$rmsd2) = cal_sim($benchmark_file,$native_file);
 	$avg_gdt2_benchmark += $gdttsscore2;
 	
 	$diff = $gdttsscore2 - $gdttsscore1;
