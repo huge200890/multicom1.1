@@ -1,23 +1,30 @@
+############# MULTICOM protein structure prediction system ############
+J. Hou, T. Wu, R. Cao, J. Cheng. Protein tertiary structure modeling driven by deep learning and contact distance prediction in CASP13. Proteins, accepted. (CASP13 invited paper).
+
+Web service http://sysbio.rnet.missouri.edu/multicom_cluster/
+
+
+
 ### method 1
 hhsearch
-Söding J. Protein homology detection by HMM-HMM comparison. Bioinformatics. 2005;21(7):951-960.
+SÃ¶ding J. Protein homology detection by HMM-HMM comparison. Bioinformatics. 2005;21(7):951-960.
 
 
 ### method 2
 hhsearch15
-Söding J. Protein homology detection by HMM-HMM comparison. Bioinformatics. 2005;21(7):951-960.
+SÃ¶ding J. Protein homology detection by HMM-HMM comparison. Bioinformatics. 2005;21(7):951-960.
 
 ### method 3
 hhsearch151
-Söding J. Protein homology detection by HMM-HMM comparison. Bioinformatics. 2005;21(7):951-960.
+SÃ¶ding J. Protein homology detection by HMM-HMM comparison. Bioinformatics. 2005;21(7):951-960.
 
 ### method 4
 hhsuite
-Remmert M, Biegert A, Hauser A, Söding J. HHblits: lightning-fast iterative protein sequence searching by HMM-HMM alignment. Nat Methods. 2012;9(2):173-175.
+Remmert M, Biegert A, Hauser A, SÃ¶ding J. HHblits: lightning-fast iterative protein sequence searching by HMM-HMM alignment. Nat Methods. 2012;9(2):173-175.
 
 ### method 5
 hhsuite3
-Remmert M, Biegert A, Hauser A, Söding J. HHblits: lightning-fast iterative protein sequence searching by HMM-HMM alignment. Nat Methods. 2012;9(2):173-175.
+Remmert M, Biegert A, Hauser A, SÃ¶ding J. HHblits: lightning-fast iterative protein sequence searching by HMM-HMM alignment. Nat Methods. 2012;9(2):173-175.
 
 ### method 5
 hmmer
@@ -29,15 +36,15 @@ Johnson LS, Eddy SR, Portugaly E. Hidden Markov model speed heuristic and iterat
 
 ### method 7
 hhblits
-Remmert M, Biegert A, Hauser A, Söding J. HHblits: lightning-fast iterative protein sequence searching by HMM-HMM alignment. Nat Methods. 2012;9(2):173-175.
+Remmert M, Biegert A, Hauser A, SÃ¶ding J. HHblits: lightning-fast iterative protein sequence searching by HMM-HMM alignment. Nat Methods. 2012;9(2):173-175.
 
 ### method 8
 hhblits3
-Remmert M, Biegert A, Hauser A, Söding J. HHblits: lightning-fast iterative protein sequence searching by HMM-HMM alignment. Nat Methods. 2012;9(2):173-175.
+Remmert M, Biegert A, Hauser A, SÃ¶ding J. HHblits: lightning-fast iterative protein sequence searching by HMM-HMM alignment. Nat Methods. 2012;9(2):173-175.
 
 ### method 9
 hhpred
-Söding, Johannes, Andreas Biegert, and Andrei N. Lupas. "The HHpred interactive server for protein homology detection and structure prediction." Nucleic acids research 33.suppl_2 (2005): W244-W248.
+SÃ¶ding, Johannes, Andreas Biegert, and Andrei N. Lupas. "The HHpred interactive server for protein homology detection and structure prediction." Nucleic acids research 33.suppl_2 (2005): W244-W248.
 
 ### method 10
 ffas
@@ -51,23 +58,23 @@ http://prodata.swmed.edu/compass/compass.php
 
 ### method 12
 blast
-Altschul SF, Madden TL, Schäffer AA, et al. Gapped BLAST and PSI-BLAST: a new generation of protein database search programs. Nucleic Acids Res. 1997;25(17):3389-3402.
+Altschul SF, Madden TL, SchÃ¤ffer AA, et al. Gapped BLAST and PSI-BLAST: a new generation of protein database search programs. Nucleic Acids Res. 1997;25(17):3389-3402.
 
 ### method 13
 newblast
-Altschul SF, Madden TL, Schäffer AA, et al. Gapped BLAST and PSI-BLAST: a new generation of protein database search programs. Nucleic Acids Res. 1997;25(17):3389-3402.
+Altschul SF, Madden TL, SchÃ¤ffer AA, et al. Gapped BLAST and PSI-BLAST: a new generation of protein database search programs. Nucleic Acids Res. 1997;25(17):3389-3402.
 
 ### method 14
 csblast
-Biegert A, Söding J. Sequence context-specific profiles for homology searching. Proc Natl Acad Sci. 2009;106(10):3770-3775.
+Biegert A, SÃ¶ding J. Sequence context-specific profiles for homology searching. Proc Natl Acad Sci. 2009;106(10):3770-3775.
 
 ### method 15
 csiblast
-Biegert A, Söding J. Sequence context-specific profiles for homology searching. Proc Natl Acad Sci. 2009;106(10):3770-3775.
+Biegert A, SÃ¶ding J. Sequence context-specific profiles for homology searching. Proc Natl Acad Sci. 2009;106(10):3770-3775.
 
 ### method 16
 psiblast
-Altschul SF, Madden TL, Schäffer AA, et al. Gapped BLAST and PSI-BLAST: a new generation of protein database search programs. Nucleic Acids Res. 1997;25(17):3389-3402.
+Altschul SF, Madden TL, SchÃ¤ffer AA, et al. Gapped BLAST and PSI-BLAST: a new generation of protein database search programs. Nucleic Acids Res. 1997;25(17):3389-3402.
 
 ### method 17
 sam
@@ -79,7 +86,7 @@ Madera M. Profile comparer: a program for scoring and aligning profile hidden Ma
 
 ### method 22
 raptorx
-Källberg M, Margaryan G, Wang S, Ma J, Xu J. RaptorX server: a resource for template-based protein structure modeling. Methods Mol Biol. 2014;1137:17-27.
+KÃ¤llberg M, Margaryan G, Wang S, Ma J, Xu J. RaptorX server: a resource for template-based protein structure modeling. Methods Mol Biol. 2014;1137:17-27.
 
 ### method 23
 muster
