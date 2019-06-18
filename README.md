@@ -9,10 +9,23 @@ git clone https://github.com/multicom-toolbox/multicom
 cd multicom
 ```
 
-**(2) Download the database (required)**
+**(2) Setup the tools and download the database (required)**
+
 ```
-wget MULTICOM_db_tools.tar.gz (contact us)
+a. edit method.list
+
+    uncomment the methods that you would like to run in MULTICOM system (i.e., DNCON2, HHsearch, CONFOLD) 
+
+b. edit setup_database.pl
+
+    set the path of variable '$multicom_db_tools_dir' for multicom databases and tools (i.e., /home/MULTICOM_db_tools/).
+
+c. perl setup_database.pl
 ```
+
+Please refer to 'Methods_reference.txt' to cite the methods that you use using MULTICOM system for publication.
+
+
 **(3) Configure MULTICOM system (required)**
 
 ```
@@ -26,12 +39,9 @@ perl configure.pl
 ```
 
 **(4) Mannally configure tools (required)**
-
+*** one-time installation. If the path is same as before, the configurations can be skipped.
 ```
 cd installation/MULTICOM_manually_install_files
-
-# one-time installation. If the path is same as before, the configurations can be skipped.
-
 
 $ sh ./P1_install_boost.sh 
 (** may take ~20 min)
@@ -65,53 +75,66 @@ $ vi ~/.keras/keras.json
 }
 ```
 
-**(6) Testing the MULTICOM tools (recommended)**
-
+**(6) Testing the individual tools in MULTICOM (recommended)**
 
 ```
 cd installation/MULTICOM_test_codes
 
-ls
+   
+a. Sequential testing 
+    perl test_multicom_all_parallel.pl
+  
+b. Parallel tesing up to 5 jobs at same time
+    perl test_multicom_all_parallel.pl 5
+    
+```
 
-sh T1-run-pspro2.sh
-
-sh T2-run-SCRATCH.sh
-
-sh T4-run-dncon2.sh 
-
-sh T5-run-modeller9.16.sh
-
-sh T7-run-hhsearch.sh
-
-sh T11-run-hhsuite.sh
-
-sh T14-run-psiblast.sh
-
-sh T15-run-compass.sh
-
-sh T17-run-prc.sh
-
-sh T20-run-raptorx.sh
-
-sh T27-run-confold.sh
-
-sh T28-run-unicon3d.sh
+**(7) Validate the individual predictons**
 
 ```
 
-**(7) Validate predictons**
-```
 cd installation/MULTICOM_test_codes
 sh T99-run-validation.sh
+
 ```
 
-**(8) Run MULTICOM for structure predicton**
+**(8) Testing the integrated MULTICOM system (recommended)**
+
+```
+
+cd examples
+sh T0-run-multicom-T1006.sh
+sh T0-run-multicom-hard-T0957s2.sh
+
+```
+
+**(9) Run MULTICOM for structure predicton**
 
 ```
    Usage:
-   $ sh bin/run_multicom.sh <file name>.fasta  <output folder>
+   $ sh bin/run_multicom.sh <target id> <file name>.fasta  <output folder>
 
    Example:
-   $ sh bin/run_multicom.sh examples/T0993s2.fasta test_out/T0993s2_out
+   $ sh bin/run_multicom.sh T0993s2 examples/T0993s2.fasta test_out/T0993s2_out
 ```
 
+**(10) Run individual methods for structure predicton**
+
+```
+Examples:
+   hhsearch:
+   $ sh bin/P1-run-hhsearch.sh <target id> <file name>.fasta  <output folder>
+   
+   dncon2:
+   $ sh bin/P4-run-dncon2.sh <target id> <file name>.fasta  <output folder>
+
+   hhsuite:
+   $ sh bin/P11-run-hhsuite.sh <target id> <file name>.fasta  <output folder>
+
+   hhblits3:
+   $ sh bin/P24-run-hhblits3.sh <target id> <file name>.fasta  <output folder>
+
+   confold:
+   $ sh bin/P27-run-confold.sh <target id> <file name>.fasta  <output folder>
+
+```
