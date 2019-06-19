@@ -9,8 +9,8 @@ Web service: http://sysbio.rnet.missouri.edu/multicom_cluster/
 
 ```
 cd /home/MULTICOM_TS
-git clone https://github.com/multicom-toolbox/multicom
-cd multicom
+git clone https://github.com/huge200890/multicom_beta1.0.git
+cd multicom_beta1.0
 ```
 
 **(2) Setup the tools and download the database (required)**
