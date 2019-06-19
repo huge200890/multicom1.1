@@ -8,79 +8,79 @@ hhsearch15
 hhsearch151
 
 ### method 4
-hhsuite
+#hhsuite
 
 ### method 5
-hhsuite3
+#hhsuite3
 
 ### method 5
-hmmer
+#hmmer
 
 ### method 6
-hmmer3
+#hmmer3
 
 ### method 7
-hhblits
+#hhblits
 
 ### method 8
-hhblits3
+#hhblits3
 
 ### method 9
-hhpred
+#hhpred
 
 ### method 10
-ffas
+#ffas
 
 ### method 11
-compass
+#compass
 
 ### method 12
-blast
+#blast
 
 ### method 13
-newblast
+#newblast
 
 ### method 14
-csblast
+#csblast
 
 ### method 15
-csiblast
+#csiblast
 
 ### method 16
-psiblast
+#psiblast
 
 ### method 17
-sam
+#sam
 
 ### method 18
-prc
+#prc
 
 ### method 22
-raptorx
+#raptorx
 
 ### method 23
-muster
+#muster
 
 ### method 24
-novel
+#novel
 
 ### method 25
-deepsf
+#deepsf
 
 ### method 26
 confold
 
 ### method 27
-rosettacon
+#rosettacon
 
 ### method 28
-unicon3d
+#unicon3d
 
 ### method 29
-rosetta
+#rosetta
 
 ### method 30
 dncon2
 
 ### method 30
-fusioncon
+#fusioncon
