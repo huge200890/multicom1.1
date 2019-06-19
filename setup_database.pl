@@ -106,6 +106,7 @@ foreach $db (@basic_db)
 		print "\t$dbname is done!\n";
 		next;
 	}
+	-e $db || `rm $db`;
 	`wget http://sysbio.rnet.missouri.edu/multicom_db_tools/databases/$db`;
 	if(-e "$db")
 	{
@@ -133,6 +134,7 @@ foreach $tool (@basic_tools)
 		print "\t$toolname is done!\n";
 		next;
 	}
+	-e $tool || `rm $tool`;
 	`wget http://sysbio.rnet.missouri.edu/multicom_db_tools/tools/$tool`;
 	if(-e "$tool")
 	{
@@ -163,6 +165,7 @@ if(-e "uniref90.pal")
 	print "\tuniref90.fasta is found, start formating......\n";
 	`$tools_dir/blast-2.2.25/bin/formatdb -i uniref90.fasta -o T -t uniref90 -n uniref90`;
 }else{
+	-e "uniref90.fasta.gz" || `rm uniref90.fasta.gz`;
 	`wget ftp://ftp.uniprot.org/pub/databases/uniprot/uniref/uniref90/uniref90.fasta.gz`;
 	if(-e "uniref90.fasta.gz")
 	{
@@ -525,6 +528,7 @@ if(!(-e $method_file) or !(-e $method_info))
 					
 					}else{
 						print("\n\t\t#### Download uniprot20\n\n");
+						-e "uniprot20_2016_02.tgz" || `rm uniprot20_2016_02.tgz`;
 						`wget http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/old-releases/uniprot20_2016_02.tgz`;
 						if(-e "uniprot20_2016_02.tgz")
 						{
@@ -573,6 +577,7 @@ if(!(-e $method_file) or !(-e $method_info))
 					
 					}else{
 						print("\n\t\t#### Download uniprot30\n\n");
+						-e "uniclust30_2017_10_hhsuite.tar.gz" || `rm uniclust30_2017_10_hhsuite.tar.gz`;
 						`wget http://wwwuser.gwdg.de/~compbiol/uniclust/2017_10/uniclust30_2017_10_hhsuite.tar.gz`;
 						if(-e "uniclust30_2017_10_hhsuite.tar.gz")
 						{
