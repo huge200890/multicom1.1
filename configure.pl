@@ -403,7 +403,7 @@ if(-d $addr_mod9v7)
 
 
 my($addr_mod9v16) = $multicom_db_tools_dir."/tools/modeller-9.16/bin/mod9.16";
-if(-d $addr_mod9v16)
+if(-e $addr_mod9v16)
 {
 	print "\n#########  Setting up MODELLER 9v16 \n";
 	if (!-s $addr_mod9v16) {

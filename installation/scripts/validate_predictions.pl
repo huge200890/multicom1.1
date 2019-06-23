@@ -24,7 +24,7 @@ foreach $subdir (@subdirs)
 		next;
 	}
 	@tmp = split(/\_/,$subdir);
-	if(@tmp <3)
+	if(@tmp <2)
 	{
 		next;
 	}
@@ -51,7 +51,7 @@ foreach $subdir (@subdirs)
 	printf "%-20s\t", 'Predicted (GDT-TS)';
 	printf "%-20s\t", 'Benchmark (GDT-TS)';
 	printf "%-20s\n", 'Difference (GDT-TS)';
-	foreach $file (@files)
+	foreach $file (sort @files)
 	{
 		if($file eq '.' or $file eq '..' or index($file,'.pdb') < 0)
 		{
@@ -90,6 +90,11 @@ foreach $subdir (@subdirs)
 		printf "%-20f\n", $diff;
 	}
 	
+	if($model_num == 0)
+	{
+		print "\nNo models are generated in $modeldir\n";
+		next;
+	}
 	print "\n";
 	$avg_gdt_predict = sprintf("%.5f",$avg_gdt_predict/$model_num);
 	$avg_gdt2_benchmark = sprintf("%.5f",$avg_gdt2_benchmark/$model_num);
@@ -124,7 +129,7 @@ foreach $subdir (@subdirs)
 		next;
 	}
 	@tmp = split(/\_/,$subdir);
-	if(@tmp <3)
+	if(@tmp <2)
 	{
 		next;
 	}
@@ -168,7 +173,7 @@ foreach $subdir (@subdirs)
 			$Top2L_diff = $benchmark_Top2L - $Predicted_Top2L;
 
 			printf "\n%-20s\t", 'Contact';
-			printf "\n%-20s\t", 'Threshold';
+			printf "%-20s\t", 'Threshold';
 			printf "%-20s\t", 'Predicted (Precision)';
 			printf "%-20s\t", 'Benchmark (Precision)';
 			printf "%-20s\n", 'Difference (Precision)';
@@ -228,7 +233,7 @@ foreach $subdir (@subdirs)
 			$Top2L_diff = $benchmark_Top2L - $Predicted_Top2L;
 
 			printf "\n%-20s\t", 'Contact';
-			printf "\n%-20s\t", 'Threshold';
+			printf "%-20s\t", 'Threshold';
 			printf "%-20s\t", 'Predicted (Precision)';
 			printf "%-20s\t", 'Benchmark (Precision)';
 			printf "%-20s\n", 'Difference (Precision)';
@@ -281,7 +286,7 @@ foreach $subdir (@subdirs)
 			$Top2L_diff = $benchmark_Top2L - $Predicted_Top2L;
 
 			printf "\n%-20s\t", 'Contact';
-			printf "\n%-20s\t", 'Threshold';
+			printf "%-20s\t", 'Threshold';
 			printf "%-20s\t", 'Predicted (Precision)';
 			printf "%-20s\t", 'Benchmark (Precision)';
 			printf "%-20s\n", 'Difference (Precision)';
@@ -335,7 +340,7 @@ foreach $subdir (@subdirs)
 			$Top2L_diff = $benchmark_Top2L - $Predicted_Top2L;
 
 			printf "\n%-20s\t", 'Contact';
-			printf "\n%-20s\t", 'Threshold';
+			printf "%-20s\t", 'Threshold';
 			printf "%-20s\t", 'Predicted (Precision)';
 			printf "%-20s\t", 'Benchmark (Precision)';
 			printf "%-20s\n", 'Difference (Precision)';
@@ -385,7 +390,7 @@ foreach $subdir (@subdirs)
 			$Top2L_diff = $benchmark_Top2L - $Predicted_Top2L;
 
 			printf "\n%-20s\t", 'Contact';
-			printf "\n%-20s\t", 'Threshold';
+			printf "%-20s\t", 'Threshold';
 			printf "%-20s\t", 'Predicted (Precision)';
 			printf "%-20s\t", 'Benchmark (Precision)';
 			printf "%-20s\n", 'Difference (Precision)';
@@ -425,7 +430,7 @@ foreach $subdir (@subdirs)
 }
 
 printf "\n%-20s\t", 'Method';
-printf "\n%-20s\t", 'Difference';
+printf "%-20s\t", 'Difference';
 printf "%-20s\n", 'Status';
 foreach $server (sort keys %check_list)
 {
