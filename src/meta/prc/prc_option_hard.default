@@ -27,7 +27,8 @@ atom_dir = SOFTWARE_PATH/databases/atom/
 
 ###########new settings specifically for hhsearch profile-profile based approach
 #hhsearch dir
-sam_dir= SOFTWARE_PATH/tools/sam3.5.i686-linux/
+#sam_dir= SOFTWARE_PATH/tools/sam3.5.i686-linux/
+sam_dir= SOFTWARE_PATH/tools/sam3.5.x86_64-linux/
 
 #samdb=/home/casp13/MULTICOM_package/software/prosys_database/cm_lib/pdb_cm
 samdb= SOFTWARE_PATH/databases/cm_lib/pdb_cm

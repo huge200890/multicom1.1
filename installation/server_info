@@ -97,13 +97,13 @@ psiblast_tools:blast-2.2.17.tar.gz;modeller-9.16.tar.gz;tm_score2.tar.gz;tm_alig
 psiblast_databases:cm_lib.tar.gz;atom.tar.gz;
 
 
-#### template identification using sam
-sam_tools:sam3.5.i686-linux.tar.gz;blast-2.2.17.tar.gz;modeller-9.16.tar.gz;tm_score2.tar.gz;tm_align2.tar.gz;clustalw1.83.tar.gz;hhsuite-2.0.8-linux-x86_64.tar.gz;hhblits.tar.gz;psipred.tar.gz;psipred-2.61.tar.gz
+#### template identification using sam #sam3.5.i686-linux.tar.gz;
+sam_tools:sam3.5.x86_64-linux.tar.gz;blast-2.2.17.tar.gz;modeller-9.16.tar.gz;tm_score2.tar.gz;tm_align2.tar.gz;clustalw1.83.tar.gz;hhsuite-2.0.8-linux-x86_64.tar.gz;hhblits.tar.gz;psipred.tar.gz;psipred-2.61.tar.gz
 sam_databases:cm_lib.tar.gz;atom.tar.gz;
 
 
 #### template identification using prc
-prc_tools:prc1.5.6.tar.gz;sam3.5.i686-linux.tar.gz;blast-2.2.17.tar.gz;modeller-9.16.tar.gz;tm_score2.tar.gz;tm_align2.tar.gz;clustalw1.83.tar.gz;hhsuite-2.0.8-linux-x86_64.tar.gz;hhblits.tar.gz;psipred.tar.gz;psipred-2.61.tar.gz
+prc_tools:prc1.5.6.tar.gz;sam3.5.x86_64-linux.tar.gz;blast-2.2.17.tar.gz;modeller-9.16.tar.gz;tm_score2.tar.gz;tm_align2.tar.gz;clustalw1.83.tar.gz;hhsuite-2.0.8-linux-x86_64.tar.gz;hhblits.tar.gz;psipred.tar.gz;psipred-2.61.tar.gz
 prc_databases:cm_lib.tar.gz;atom.tar.gz;prc_db.tar.gz
 
 
