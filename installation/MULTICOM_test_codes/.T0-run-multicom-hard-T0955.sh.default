@@ -1,4 +1,13 @@
 #!/bin/bash
+#SBATCH -J  T0955
+#SBATCH -o T0955-%j.out
+#SBATCH --partition Lewis,hpc5,hpc4
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=10G
+#SBATCH --time 2-00:00
+
 
 mkdir -p SOFTWARE_PATH/test_out/T0955_multicom/
 cd SOFTWARE_PATH/test_out/T0955_multicom/
