@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #perl /home/jh7x3/multicom/installation/scripts/validate_integrated_predictions.pl  T1006  /home/jh7x3/multicom/test_out/T1006_out/full_length/meta /home/jh7x3/multicom//installation/benchmark
-if (@ARGV != 4) {
+if (@ARGV != 5) {
   print "Usage: structure1  structure2\n";
   exit;
 }
@@ -8,6 +8,7 @@ $targetid = $ARGV[0];
 $test_dir = $ARGV[1]; 
 $benchmark_dir = $ARGV[2];
 $native_file = $ARGV[3];
+$prefix = $ARGV[4];
 
 $GLOBAL_PATH="/home/jh7x3/multicom_beta1.0/";
 
@@ -19,6 +20,8 @@ opendir(FILES,"$test_dir/") || die "Failed to open directory $test_dir/\n";
 closedir(FILES);
 $avg_gdt_predict = 0;
 $avg_gdt2_benchmark = 0;
+$avg_rmsd_predict = 0;
+$avg_rmsd2_benchmark = 0;
 $model_num = 0;
 
 printf "\n%-20s\t", 'Model';
@@ -28,7 +31,7 @@ printf "%-20s\n", 'Difference (GDT-TS)';
 
 foreach $file (sort @files)
 {
-	if($file eq '.' or $file eq '..' or substr($file,length($file)-4) ne '.pdb' or index($file,'casp') < 0)
+	if($file eq '.' or $file eq '..' or substr($file,length($file)-4) ne '.pdb' or index($file,$prefix) < 0)
 	{
 		next;
 	}	
@@ -46,9 +49,11 @@ foreach $file (sort @files)
 	
 	($gdttsscore1,$rmsd1) = cal_sim($predict_file,$native_file);
 	$avg_gdt_predict += $gdttsscore1;
+	$avg_rmsd_predict += $rmsd1;
 	
 	($gdttsscore2,$rmsd2) = cal_sim($benchmark_file,$native_file);
 	$avg_gdt2_benchmark += $gdttsscore2;
+	$avg_rmsd2_benchmark += $rmsd2;
 	
 	$diff = $gdttsscore2 - $gdttsscore1;
 	
@@ -63,18 +68,27 @@ foreach $file (sort @files)
 
 $avg_gdt_predict = sprintf("%.5f",$avg_gdt_predict/$model_num);
 $avg_gdt2_benchmark = sprintf("%.5f",$avg_gdt2_benchmark/$model_num);
+$avg_rmsd_predict = sprintf("%.5f",$avg_rmsd_predict/$model_num);
+$avg_rmsd2_benchmark = sprintf("%.5f",$avg_rmsd2_benchmark/$model_num);
 
 $diff = $avg_gdt2_benchmark - $avg_gdt_predict;
+$rmsd_diff = $avg_rmsd2_benchmark - $avg_rmsd_predict;
 
 printf "\n%-20s\t", 'Model';
 printf "%-20s\t", 'Predicted (GDT-TS)';
 printf "%-20s\t", 'Benchmark (GDT-TS)';
-printf "%-20s\n", 'Difference (GDT-TS)';
+printf "%-20s\t", 'Difference (GDT-TS)';
+printf "%-20s\t", 'Predicted (RMSD)';
+printf "%-20s\t", 'Benchmark (RMSD)';
+printf "%-20s\n", 'Difference (RMSD)';
 
 printf "%-20s\t", 'Average';
 printf "%-20f\t", $avg_gdt_predict;
 printf "%-20f\t", $avg_gdt2_benchmark;
-printf "%-20f\n\n", $diff;
+printf "%-20f\t", $diff;
+printf "%-20f\t", $avg_rmsd_predict;
+printf "%-20f\t", $avg_rmsd2_benchmark;
+printf "%-20f\n\n", $rmsd_diff;
 
 
 print "done\n";
