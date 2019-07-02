@@ -27,6 +27,7 @@ if(-d "$workdir/full_length_hard")
 {
 	$full_length_dir = 'full_length_hard';
 }
+
 ###### copy basic information
 if(!(-e "$workdir/full_length/hhsearch15/$targetid.fasta"))
 {
@@ -36,6 +37,22 @@ if(!(-e "$workdir/full_length/hhsearch15/$targetid.fasta"))
 	`cp $workdir/full_length/hhsearch15/$targetid.fasta $outputdir/$targetid.fasta`;
 	`cp $workdir/full_length/hhsearch15/$targetid.fasta $outputdir/full_length/$targetid.fasta`;
 }
+
+	
+if(-d "$workdir/full_length_hard" and !(-e "$workdir/domain_info"))
+{
+	#print out domain information
+	open(TMP,"$outputdir/query.fasta");
+	@content = <TMP>;
+	close TMP;
+	shift @content;
+	$seq = shift @content;
+	chomp $seq;
+	open(DOM_DEF, ">$workdir/domain_info");
+	print DOM_DEF "domain 0:1-".length($seq)."\n"; 
+	close DOM_DEF; 	
+}
+
 
 if(!(-e "$workdir/domain_info"))
 {
@@ -104,13 +121,13 @@ if(-e "$workdir/comb/casp1.pdb")
 	`cp $workdir/comb/casp1.pdb $outputdir/Final_models/$targetid-1.pdb`;
 	
 
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp1.pdb > $outputdir/full_length/$targetid-1.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-1.input > $outputdir/full_length/$targetid-1.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-1.ps  $outputdir/full_length/$targetid-1.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp1.pdb > $outputdir/full_length/$targetid-1.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-1.input > $outputdir/full_length/$targetid-1.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-1.ps  $outputdir/full_length/$targetid-1.png`;
 	
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-1.pdb > $outputdir/Final_models/$targetid-1.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-1.input > $outputdir/Final_models/$targetid-1.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-1.ps  $outputdir/Final_models/$targetid-1.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-1.pdb > $outputdir/Final_models/$targetid-1.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-1.input > $outputdir/Final_models/$targetid-1.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-1.ps  $outputdir/Final_models/$targetid-1.png`;
 	
 }elsif(-e "$workdir/mcomb/casp1.pdb")
 {
@@ -118,13 +135,13 @@ if(-e "$workdir/comb/casp1.pdb")
 	`cp $workdir/mcomb/casp1.pdb $outputdir/Final_models/$targetid-1.pdb`;
 	
 
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp1.pdb > $outputdir/full_length/$targetid-1.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-1.input > $outputdir/full_length/$targetid-1.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-1.ps  $outputdir/full_length/$targetid-1.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp1.pdb > $outputdir/full_length/$targetid-1.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-1.input > $outputdir/full_length/$targetid-1.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-1.ps  $outputdir/full_length/$targetid-1.png`;
 	
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-1.pdb > $outputdir/Final_models/$targetid-1.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-1.input > $outputdir/Final_models/$targetid-1.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-1.ps  $outputdir/Final_models/$targetid-1.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-1.pdb > $outputdir/Final_models/$targetid-1.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-1.input > $outputdir/Final_models/$targetid-1.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-1.ps  $outputdir/Final_models/$targetid-1.png`;
 }else
 {
 	print "Warning: 5. Failed to find $workdir/comb/casp1.pdb or $workdir/mcomb/casp1.pdb\n";
@@ -138,26 +155,26 @@ if(-e "$workdir/comb/casp2.pdb")
 	`cp $workdir/comb/casp2.pdb $outputdir/Final_models/$targetid-2.pdb`;
 	
 
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp2.pdb > $outputdir/full_length/$targetid-2.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-2.input > $outputdir/full_length/$targetid-2.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-2.ps  $outputdir/full_length/$targetid-2.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp2.pdb > $outputdir/full_length/$targetid-2.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-2.input > $outputdir/full_length/$targetid-2.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-2.ps  $outputdir/full_length/$targetid-2.png`;
 	
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-2.pdb > $outputdir/Final_models/$targetid-2.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-2.input > $outputdir/Final_models/$targetid-2.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-2.ps  $outputdir/Final_models/$targetid-2.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-2.pdb > $outputdir/Final_models/$targetid-2.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-2.input > $outputdir/Final_models/$targetid-2.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-2.ps  $outputdir/Final_models/$targetid-2.png`;
 }elsif(-e "$workdir/mcomb/casp2.pdb")
 {
 	`cp $workdir/mcomb/casp2.pdb $outputdir/full_length/$targetid.casp2.pdb`;
 	`cp $workdir/mcomb/casp2.pdb $outputdir/Final_models/$targetid-2.pdb`;
 	
 
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp2.pdb > $outputdir/full_length/$targetid-2.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-2.input > $outputdir/full_length/$targetid-2.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-2.ps  $outputdir/full_length/$targetid-2.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp2.pdb > $outputdir/full_length/$targetid-2.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-2.input > $outputdir/full_length/$targetid-2.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-2.ps  $outputdir/full_length/$targetid-2.png`;
 	
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-2.pdb > $outputdir/Final_models/$targetid-2.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-2.input > $outputdir/Final_models/$targetid-2.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-2.ps  $outputdir/Final_models/$targetid-2.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-2.pdb > $outputdir/Final_models/$targetid-2.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-2.input > $outputdir/Final_models/$targetid-2.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-2.ps  $outputdir/Final_models/$targetid-2.png`;
 }else
 {
 	print "Warning: 5. Failed to find $workdir/comb/casp2.pdb or $workdir/mcomb/casp2.pdb\n";
@@ -171,26 +188,26 @@ if(-e "$workdir/comb/casp3.pdb")
 	`cp $workdir/comb/casp3.pdb $outputdir/Final_models/$targetid-3.pdb`;
 	
 
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp3.pdb > $outputdir/full_length/$targetid-3.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-3.input > $outputdir/full_length/$targetid-3.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-3.ps  $outputdir/full_length/$targetid-3.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp3.pdb > $outputdir/full_length/$targetid-3.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-3.input > $outputdir/full_length/$targetid-3.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-3.ps  $outputdir/full_length/$targetid-3.png`;
 	
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-3.pdb > $outputdir/Final_models/$targetid-3.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-3.input > $outputdir/Final_models/$targetid-3.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-3.ps  $outputdir/Final_models/$targetid-3.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-3.pdb > $outputdir/Final_models/$targetid-3.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-3.input > $outputdir/Final_models/$targetid-3.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-3.ps  $outputdir/Final_models/$targetid-3.png`;
 }elsif(-e "$workdir/mcomb/casp3.pdb")
 {
 	`cp $workdir/mcomb/casp3.pdb $outputdir/full_length/$targetid.casp3.pdb`;
 	`cp $workdir/mcomb/casp3.pdb $outputdir/Final_models/$targetid-3.pdb`;
 	
 
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp3.pdb > $outputdir/full_length/$targetid-3.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-3.input > $outputdir/full_length/$targetid-3.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-3.ps  $outputdir/full_length/$targetid-3.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp3.pdb > $outputdir/full_length/$targetid-3.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-3.input > $outputdir/full_length/$targetid-3.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-3.ps  $outputdir/full_length/$targetid-3.png`;
 	
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-3.pdb > $outputdir/Final_models/$targetid-3.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-3.input > $outputdir/Final_models/$targetid-3.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-3.ps  $outputdir/Final_models/$targetid-3.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-3.pdb > $outputdir/Final_models/$targetid-3.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-3.input > $outputdir/Final_models/$targetid-3.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-3.ps  $outputdir/Final_models/$targetid-3.png`;
 }else
 {
 	print "Warning: 5. Failed to find $workdir/comb/casp2.pdb or $workdir/mcomb/casp2.pdb\n";
@@ -204,26 +221,26 @@ if(-e "$workdir/comb/casp4.pdb")
 	`cp $workdir/comb/casp4.pdb $outputdir/Final_models/$targetid-4.pdb`;
 	
 
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp4.pdb > $outputdir/full_length/$targetid-4.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-4.input > $outputdir/full_length/$targetid-4.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-4.ps  $outputdir/full_length/$targetid-4.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp4.pdb > $outputdir/full_length/$targetid-4.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-4.input > $outputdir/full_length/$targetid-4.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-4.ps  $outputdir/full_length/$targetid-4.png`;
 	
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-4.pdb > $outputdir/Final_models/$targetid-4.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-4.input > $outputdir/Final_models/$targetid-4.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-4.ps  $outputdir/Final_models/$targetid-4.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-4.pdb > $outputdir/Final_models/$targetid-4.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-4.input > $outputdir/Final_models/$targetid-4.ps`;
+	##`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-4.ps  $outputdir/Final_models/$targetid-4.png`;
 }elsif(-e "$workdir/mcomb/casp4.pdb")
 {
 	`cp $workdir/mcomb/casp4.pdb $outputdir/full_length/$targetid.casp4.pdb`;
 	`cp $workdir/mcomb/casp4.pdb $outputdir/Final_models/$targetid-4.pdb`;
 	
 
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp4.pdb > $outputdir/full_length/$targetid-4.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-4.input > $outputdir/full_length/$targetid-4.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-4.ps  $outputdir/full_length/$targetid-4.png`;
+	##`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp4.pdb > $outputdir/full_length/$targetid-4.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-4.input > $outputdir/full_length/$targetid-4.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-4.ps  $outputdir/full_length/$targetid-4.png`;
 	
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-4.pdb > $outputdir/Final_models/$targetid-4.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-4.input > $outputdir/Final_models/$targetid-4.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-4.ps  $outputdir/Final_models/$targetid-4.png`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-4.pdb > $outputdir/Final_models/$targetid-4.input`;
+	#`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-4.input > $outputdir/Final_models/$targetid-4.ps`;
+	#`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-4.ps  $outputdir/Final_models/$targetid-4.png`;
 }else
 {
 	print "Warning: 5. Failed to find $workdir/comb/casp4.pdb or $workdir/mcomb/casp4.pdb\n";
@@ -237,26 +254,26 @@ if(-e "$workdir/comb/casp5.pdb")
 	`cp $workdir/comb/casp5.pdb $outputdir/Final_models/$targetid-5.pdb`;
 	
 
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp5.pdb > $outputdir/full_length/$targetid-5.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-5.input > $outputdir/full_length/$targetid-5.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-5.ps  $outputdir/full_length/$targetid-5.png`;
+	##`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp5.pdb > $outputdir/full_length/$targetid-5.input`;
+	##`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-5.input > $outputdir/full_length/$targetid-5.ps`;
+	##`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-5.ps  $outputdir/full_length/$targetid-5.png`;
 	
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-5.pdb > $outputdir/Final_models/$targetid-5.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-5.input > $outputdir/Final_models/$targetid-5.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-5.ps  $outputdir/Final_models/$targetid-5.png`;
+	##`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-5.pdb > $outputdir/Final_models/$targetid-5.input`;
+	##`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-5.input > $outputdir/Final_models/$targetid-5.ps`;
+	##`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-5.ps  $outputdir/Final_models/$targetid-5.png`;
 }elsif(-e "$workdir/mcomb/casp5.pdb")
 {
 	`cp $workdir/mcomb/casp5.pdb $outputdir/full_length/$targetid.casp5.pdb`;
 	`cp $workdir/mcomb/casp5.pdb $outputdir/Final_models/$targetid-5.pdb`;
 	
 
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp5.pdb > $outputdir/full_length/$targetid-5.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-5.input > $outputdir/full_length/$targetid-5.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-5.ps  $outputdir/full_length/$targetid-5.png`;
+	##`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/full_length/$targetid.casp5.pdb > $outputdir/full_length/$targetid-5.input`;
+	##`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/full_length/$targetid-5.input > $outputdir/full_length/$targetid-5.ps`;
+	##`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/full_length/$targetid-5.ps  $outputdir/full_length/$targetid-5.png`;
 	
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-5.pdb > $outputdir/Final_models/$targetid-5.input`;
-	`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-5.input > $outputdir/Final_models/$targetid-5.ps`;
-	`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-5.ps  $outputdir/Final_models/$targetid-5.png`;
+	##`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molauto $outputdir/Final_models/$targetid-5.pdb > $outputdir/Final_models/$targetid-5.input`;
+	##`/home/jh7x3/multicom_beta1.0/tools/molscript-2.1.2/molscript  -ps  < $outputdir/Final_models/$targetid-5.input > $outputdir/Final_models/$targetid-5.ps`;
+	##`/home/jh7x3/multicom_beta1.0/tools/ImageMagick-7.0.4-7/bin/convert -density 400 $outputdir/Final_models/$targetid-5.ps  $outputdir/Final_models/$targetid-5.png`;
 }else
 {
 	print "Warning: 5. Failed to find $workdir/comb/casp5.pdb or $workdir/mcomb/casp5.pdb\n";

@@ -1,4 +1,12 @@
 #!/bin/bash
+#SBATCH -J  T0957s2
+#SBATCH -o T0957s2-%j.out
+#SBATCH --partition Lewis,hpc5,hpc4
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem-per-cpu=10G
+#SBATCH --time 2-00:00
 
 mkdir -p /home/jh7x3/multicom_beta1.0/test_out/T0957s2_multicom/
 cd /home/jh7x3/multicom_beta1.0/test_out/T0957s2_multicom/
@@ -22,10 +30,10 @@ else
 fi
 
 
-perl /home/jh7x3/multicom_beta1.0/installation/scripts/validate_integrated_predictions.pl  T0957s2  /home/jh7x3/multicom_beta1.0/test_out/T0957s2_multicom/full_length_hard/meta /home/jh7x3/multicom_beta1.0/installation/benchmark/FM/   2>&1 | tee -a /home/jh7x3/multicom_beta1.0/test_out/T0957s2_multicom.log
+perl /home/jh7x3/multicom_beta1.0/installation/scripts/validate_integrated_predictions_final.pl  T0957s2  /home/jh7x3/multicom_beta1.0/test_out/T0957s2_multicom/full_length_hard/meta /home/jh7x3/multicom_beta1.0/installation/benchmark/FM/T0957s2 /home/jh7x3/multicom_beta1.0/installation/benchmark/FM/T0957s2.pdb   2>&1 | tee -a /home/jh7x3/multicom_beta1.0/test_out/T0957s2_multicom.log
 
 
 printf "\nCheck final predictions.."
 
 
-perl /home/jh7x3/multicom_beta1.0/installation/scripts/validate_integrated_predictions_final.pl  T0957s2  /home/jh7x3/multicom_beta1.0/test_out/T0957s2_multicom/mcomb /home/jh7x3/multicom_beta1.0/installation/benchmark/FM/    2>&1 | tee -a /home/jh7x3/multicom_beta1.0/test_out/T0957s2_multicom.log
+perl /home/jh7x3/multicom_beta1.0/installation/scripts/validate_integrated_predictions_final.pl  T0957s2  /home/jh7x3/multicom_beta1.0/test_out/T0957s2_multicom/mcomb /home/jh7x3/multicom_beta1.0/installation/benchmark/FM/T0957s2/mcomb /home/jh7x3/multicom_beta1.0/installation/benchmark/FM/T0957s2.pdb    2>&1 | tee -a /home/jh7x3/multicom_beta1.0/test_out/T0957s2_multicom.log

@@ -26,7 +26,8 @@ atom_dir = /home/jh7x3/multicom_beta1.0/databases/atom/
 
 ###########new settings specifically for hhsearch profile-profile based approach
 #hhsearch dir
-sam_dir= /home/jh7x3/multicom_beta1.0/tools/sam3.5.i686-linux/
+#sam_dir= /home/jh7x3/multicom_beta1.0/tools/sam3.5.i686-linux/
+sam_dir= /home/jh7x3/multicom_beta1.0/tools/sam3.5.x86_64-linux/
 
 #all current templates
 samdb=/home/jh7x3/multicom_beta1.0/databases/fr_lib/sort90
