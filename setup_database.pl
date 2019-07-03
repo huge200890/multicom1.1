@@ -521,7 +521,7 @@ if(!(-e $method_file) or !(-e $method_info))
 					
 					
 					$uniprot20_dir = "$multicom_db_tools_dir/databases/uniprot20/";
-					if(-e "$uniprot20_dir/uniprot20_2016_02/download.done" and -e "$uniprot20_dir/uniprot20_2016_02/uniprot20_2016_02_hhm_db" )
+					if(-e "$uniprot20_dir/uniprot20_2016_02/download.done" and -e "$uniprot20_dir/uniprot20_2016_02/uniprot20_2016_02_hhm_db" and -e "$uniprot20_dir/uniprot20_2016_02/uniprot20_2016_02_a3m_db" )
 					{
 						print "\t\t$db is done!\n";
 						next;
