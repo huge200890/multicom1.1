@@ -1140,4 +1140,138 @@ sub prompt {
 
 
 
+sub configure_file{
+	my ($option_list,$prefix) = @_;
+	open(IN,$option_list) || die "Failed to open file $option_list\n";
+	$file_indx=0;
+	while(<IN>)
+	{
+		$file = $_;
+		chomp $file;
+		if ($file =~ /^$prefix/)
+		{
+			$option_default = $install_dir.$file.'.default';
+			$option_new = $install_dir.$file;
+			$file_indx++;
+			print "$file_indx: Configuring $option_new\n";
+			if (! -f $option_default)
+			{
+					die "\nOption file $option_default not exists.\n";
+			}	
+			
+			open(IN1,$option_default) || die "Failed to open file $option_default\n";
+			open(OUT1,">$option_new") || die "Failed to open file $option_new\n";
+			while(<IN1>)
+			{
+				$line = $_;
+				chomp $line;
+
+				if(index($line,'SOFTWARE_PATH')>=0)
+				{
+					$line =~ s/SOFTWARE_PATH/$install_dir/g;
+					$line =~ s/\/\//\//g;
+					print OUT1 $line."\n";
+				}else{
+					print OUT1 $line."\n";
+				}
+			}
+			close IN1;
+			close OUT1;
+		}
+	}
+	close IN;
+}
+
+
+sub configure_tools{
+	my ($option_list,$prefix,$DBtool_path) = @_;
+	open(IN,$option_list) || die "Failed to open file $option_list\n";
+	$file_indx=0;
+	while(<IN>)
+	{
+		$file = $_;
+		chomp $file;
+		if ($file =~ /^$prefix/)
+		{
+			$option_default = $DBtool_path.$file.'.default';
+			$option_new = $DBtool_path.$file;
+			$file_indx++;
+			print "$file_indx: Configuring $option_new\n";
+			if (! -f $option_default)
+			{
+					next;
+					#die "\nOption file $option_default not exists.\n";
+			}	
+			
+			open(IN1,$option_default) || die "Failed to open file $option_default\n";
+			open(OUT1,">$option_new") || die "Failed to open file $option_new\n";
+			while(<IN1>)
+			{
+				$line = $_;
+				chomp $line;
+
+				if(index($line,'SOFTWARE_PATH')>=0)
+				{
+					$line =~ s/SOFTWARE_PATH/$DBtool_path/g;
+					$line =~ s/\/\//\//g;
+					print OUT1 $line."\n";
+				}else{
+					print OUT1 $line."\n";
+				}
+			}
+			close IN1;
+			close OUT1;
+		}
+	}
+	close IN;
+}
+
+
+
+sub configure_file2{
+	my ($option_list,$prefix) = @_;
+	open(IN,$option_list) || die "Failed to open file $option_list\n";
+	$file_indx=0;
+	while(<IN>)
+	{
+		$file = $_;
+		chomp $file;
+		if ($file =~ /^$prefix/)
+		{
+			@tmparr = split('/',$file);
+			$filename = pop @tmparr;
+			chomp $filename;
+			$filepath = join('/',@tmparr);
+			$option_default = $install_dir.$filepath.'/.'.$filename.'.default';
+			$option_new = $install_dir.$file;
+			$file_indx++;
+			print "$file_indx: Configuring $option_new\n";
+			if (! -f $option_default)
+			{
+					die "\nOption file $option_default not exists.\n";
+			}	
+			
+			open(IN1,$option_default) || die "Failed to open file $option_default\n";
+			open(OUT1,">$option_new") || die "Failed to open file $option_new\n";
+			while(<IN1>)
+			{
+				$line = $_;
+				chomp $line;
+
+				if(index($line,'SOFTWARE_PATH')>=0)
+				{
+					$line =~ s/SOFTWARE_PATH/$install_dir/g;
+					$line =~ s/\/\//\//g;
+					print OUT1 $line."\n";
+				}else{
+					print OUT1 $line."\n";
+				}
+			}
+			close IN1;
+			close OUT1;
+		}
+	}
+	close IN;
+}
+
 
