@@ -24,6 +24,7 @@ if($num ==0)
 
 -d $test_out_dir || `mkdir $test_out_dir`;
 
+chdir($test_script_dir);
 opendir(DIR,"$test_script_dir") || die "Failed to open directory $test_script_dir\n";
 @input_files = readdir(DIR);
 closedir(DIR);
