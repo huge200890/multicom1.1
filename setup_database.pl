@@ -9,7 +9,7 @@
 #																					#
 # Set directory of multicom databases and tools								        #
 
-$multicom_db_tools_dir = "/data/commons/MULTICOM_db_tools_v1.1/";							        
+$multicom_db_tools_dir = "/data/commons/MULTICOM_db_tools/";							        
 						        
 
 ######################## !!! End of customize settings !!! ##########################
@@ -42,9 +42,13 @@ if (! -f $configure_file || $install_dir ne "$cur_dir/")
 print " OK!\n";
 
 
-if(!-s $multicom_db_tools_dir)
+if(!-d $multicom_db_tools_dir)
 {
-	`mkdir $multicom_db_tools_dir`;
+	$status = system("mkdir $multicom_db_tools_dir");
+	if($status)
+	{
+		die "Failed to create folder $multicom_db_tools_dir\n";
+	}
 }
 $multicom_db_tools_dir=abs_path($multicom_db_tools_dir);
 
@@ -55,12 +59,13 @@ if ( substr($multicom_db_tools_dir, length($multicom_db_tools_dir) - 1, 1) ne "/
         $multicom_db_tools_dir .= "/";
 }
 
+=pod
 if (prompt_yn("multicom database will be installed into <$multicom_db_tools_dir> ")){
 
 }else{
 	die "The installation is cancelled!\n";
 }
-
+=cut
 
 print "Start install multicom into <$multicom_db_tools_dir>\n"; 
 
@@ -72,30 +77,35 @@ $database_dir = "$multicom_db_tools_dir/databases";
 $tools_dir = "$multicom_db_tools_dir/tools";
 
 
-if(!-s $database_dir)
+if(!-d $database_dir)
 {
-	`mkdir $database_dir`;
+	$status = system("mkdir $database_dir");
+	if($status)
+	{
+		die "Failed to create folder ($database_dir), check permission or folder path\n";
+	}
+	`chmod -R 755 $database_dir`;
 }
-if(!-s $tools_dir)
-{
-	`mkdir $tools_dir`;
+if(!-d $tools_dir)
+{ 
+	$status = system("mkdir $tools_dir");
+	if($status)
+	{
+		die "Failed to create folder ($tools_dir), check permission or folder path\n";
+	}
+	`chmod -R 755 $tools_dir`;
 }
 
 
-
-=pod
-nr_latest/nr
-nr70_90/nr90;nr70_90/nr70
-nr70_90/nr90;nr70_90/nr70
-uniref/uniref90
-uniref/uniref70
-=cut
 
 
 
 
 ####### tools compilation 
-
+if(-e "$install_dir/installation/MULTICOM_manually_install_files/P1_install_boost.sh")
+{
+	`rm $install_dir/installation/MULTICOM_manually_install_files/*sh`;
+}
 ### install boost-1.55 
 open(OUT,">$install_dir/installation/MULTICOM_manually_install_files/P1_install_boost.sh") || die "Failed to open file $install_dir/installation/MULTICOM_manually_install_files/P1_install_boost.sh\n";
 print OUT "#!/bin/bash -e\n\n";
@@ -133,6 +143,7 @@ print OUT "make\n\n";
 print OUT "make install\n\n";
 close OUT;
 
+=pod
 #### install scwrl4
 
 open(OUT,">$install_dir/installation/MULTICOM_manually_install_files/P4_install_scwrl4.sh") || die "Failed to open file $install_dir/installation/MULTICOM_manually_install_files/P4_install_scwrl4.sh\n";
@@ -146,11 +157,11 @@ print OUT "cd $multicom_db_tools_dir/tools\n\n";
 print OUT "cd scwrl4\n\n";
 print OUT "./install_Scwrl4_Linux\n\n";
 close OUT;
-
+=cut
 
 #### create python virtual environment
 
-open(OUT,">$install_dir/installation/MULTICOM_manually_install_files/P5_python_virtual.sh") || die "Failed to open file $install_dir/installation/MULTICOM_manually_install_files/P5_python_virtual.sh\n";
+open(OUT,">$install_dir/installation/MULTICOM_manually_install_files/P4_python_virtual.sh") || die "Failed to open file $install_dir/installation/MULTICOM_manually_install_files/P4_python_virtual.sh\n";
 print OUT "#!/bin/bash -e\n\n";
 print OUT "echo \" Start install python virtual environment (will take ~1 min)\"\n\n";
 print OUT "cd $multicom_db_tools_dir/tools\n\n";
@@ -175,7 +186,7 @@ if(!(-e "/usr/bin/python2.6"))
 {
 	#### create python2.6 library
 
-	open(OUT,">$install_dir/installation/MULTICOM_manually_install_files/P6_python2.6_library.sh") || die "Failed to open file $install_dir/installation/MULTICOM_manually_install_files/P6_python2.6_library.sh\n";
+	open(OUT,">$install_dir/installation/MULTICOM_manually_install_files/P5_python2.6_library.sh") || die "Failed to open file $install_dir/installation/MULTICOM_manually_install_files/P5_python2.6_library.sh\n";
 	print OUT "#!/bin/bash -e\n\n";
 	print OUT "echo \" Start install python2.6 library (will take ~5 min)\"\n\n";
 	print OUT "cd $multicom_db_tools_dir/tools\n\n";
@@ -214,12 +225,14 @@ foreach $db (@basic_db)
 		`rm $db`;
 	}
 	`wget http://sysbio.rnet.missouri.edu/multicom_db_tools/databases/$db`;
+	
 	if(-e "$db")
 	{
 		print "\t$db is found, start extracting files......\n\n";
 		`tar -zxf $db`;
 		`echo 'done' > $dbname/download.done`;
 		`rm $db`;
+		`chmod -R 755 $dbname`;
 	}else{
 		die "Failed to download $db from http://sysbio.rnet.missouri.edu/multicom_db_tools/databases, please contact chengji\@missouri.edu\n";
 	}
@@ -235,11 +248,18 @@ $basic_tools_list = "blast-2.2.17.tar.gz;blast-2.2.20.tar.gz;blast-2.2.25.tar.gz
 foreach $tool (@basic_tools)
 {
 	$toolname = substr($tool,0,index($tool,'.tar.gz'));
-	if(-e "$tools_dir/$toolname/download.done")
+	if(-d "$tools_dir/$toolname")
 	{
-		print "\t$toolname is done!\n";
-		next;
-	}
+		if(-e "$tools_dir/$toolname/download.done")
+		{
+			print "\t$toolname is done!\n";
+			next;
+		}
+	}elsif(-f "$tools_dir/$toolname")
+	{
+			print "\t$toolname is done!\n";
+			next;
+	}				
 	if(-e $tool)
 	{
 		`rm $tool`;
@@ -251,6 +271,7 @@ foreach $tool (@basic_tools)
 		`tar -zxf $tool`;
 		`echo 'done' > $toolname/download.done`;
 		`rm $tool`;
+		`chmod -R 755 $toolname`;
 	}else{
 		die "Failed to download $tool from http://sysbio.rnet.missouri.edu/multicom_db_tools/tools, please contact chengji\@missouri.edu\n";
 	}
@@ -273,6 +294,7 @@ if(-e "uniref90.pal")
 {
 	print "\tuniref90.fasta is found, start formating......\n";
 	`$tools_dir/blast-2.2.25/bin/formatdb -i uniref90.fasta -o T -t uniref90 -n uniref90`;
+		`chmod -R 755 uniref90*`;
 }else{
 	if(-e "uniref90.fasta.gz")
 	{
@@ -287,6 +309,7 @@ if(-e "uniref90.pal")
 	}
 	`gzip -d uniref90.fasta.gz`;
 	`$tools_dir/blast-2.2.25/bin/formatdb -i uniref90.fasta -o T -t uniref90 -n uniref90`;
+		`chmod -R 755 uniref90*`;
 
 }
 
@@ -316,11 +339,12 @@ if(-e "uniref70.pal")
 	
 	chdir($uniref_dir);
 	`$tools_dir/blast-2.2.25/bin/formatdb -i uniref70.fasta -o T -t uniref70 -n uniref70`;
+		`chmod -R 755 uniref70*`;
 
 }
 
 
-=pod
+
 #### (5) Download uniref50
 print("\n#### (5) Download uniref50\n\n");
 $uniref_dir = "$multicom_db_tools_dir/databases/uniref";
@@ -347,9 +371,10 @@ if(-e "uniref50.pal")
 	}
 	`gzip -d uniref50.fasta.gz`;
 	`$tools_dir/blast-2.2.25/bin/formatdb -i uniref50.fasta -o T -t uniref50 -n uniref50`;
+	`chmod -R 755 uniref50*`;
 
 }
-
+=pod
 #### (6) Generating uniref20
 print("\n#### (6) Generating uniref20\n\n");
 chdir($uniref_dir);
@@ -403,8 +428,12 @@ foreach $file (@files)
 	{
 		$subfix = substr($file,9);
 		if(-l "$database_dir/nr70_90/nr90.$subfix")
-		{
-			`rm $database_dir/nr70_90/nr90.$subfix`; 
+		{	
+			$status = system("rm $database_dir/nr70_90/nr90.$subfix");
+			if($status)
+			{
+				die "Failed to remove file ($database_dir/nr70_90/nr90.$subfix), check the permission\n";
+			}
 		}
 		if($subfix eq 'pal')
 		{
@@ -426,7 +455,14 @@ foreach $file (@files)
 			close TMP;
 			close TMPOUT;
 		}else{
-			`ln -s $uniref_dir/$file $database_dir/nr70_90/nr90.$subfix`;
+			
+			$status = system("ln -s $uniref_dir/$file $database_dir/nr70_90/nr90.$subfix");
+			if($status)
+			{
+				die "Failed to link database ($database_dir/nr70_90/nr90.$subfix), check the permission\n";
+			}
+			
+			`chmod -R 755 $database_dir/nr70_90/nr90.$subfix`;
 		}
 	}
 	
@@ -435,7 +471,13 @@ foreach $file (@files)
 		$subfix = substr($file,9);
 		if(-l "$database_dir/nr70_90/nr70.$subfix")
 		{
-			`rm $database_dir/nr70_90/nr70.$subfix`; 
+			
+			$status = system("rm $database_dir/nr70_90/nr70.$subfix");
+			if($status)
+			{
+				die "Failed to remove file ($database_dir/nr70_90/nr70.$subfix), check the permission\n";
+			}
+			
 		}
 		if($subfix eq 'pal')
 		{
@@ -457,7 +499,14 @@ foreach $file (@files)
 			close TMP;
 			close TMPOUT;
 		}else{
-			`ln -s $uniref_dir/$file $database_dir/nr70_90/nr70.$subfix`;
+			
+			$status = system("ln -s $uniref_dir/$file $database_dir/nr70_90/nr70.$subfix");
+			if($status)
+			{
+				 die "Failed to link database ($database_dir/nr70_90/nr70.$subfix), check the permission\n";
+			}
+			
+			`chmod -R 755 $database_dir/nr70_90/nr70.$subfix`;
 		}
 		
 	}
@@ -489,7 +538,14 @@ foreach $file (@files)
 			close TMP;
 			close TMPOUT;
 		}else{
-			`ln -s $uniref_dir/$file $database_dir/nr_latest/nr.$subfix`;
+			
+			$status = system("ln -s $uniref_dir/$file $database_dir/nr_latest/nr.$subfix");
+			if($status)
+			{
+				 die "Failed to link database($database_dir/nr_latest/nr.$subfix), check the permission\n";
+			}
+			
+			`chmod -R 755 $database_dir/nr_latest/nr.$subfix`;
 		}
 		
 	}
@@ -582,12 +638,26 @@ if(!(-e $method_file) or !(-e $method_info))
 			foreach $tool (@basic_tools)
 			{
 				$toolname = substr($tool,0,index($tool,'.tar.gz'));
-				if(-e "$tools_dir/$toolname/download.done")
+
+				if(-d "$tools_dir/$toolname")
 				{
-					print "\t\t$toolname is done!\n";
-					next;
+					if(-e "$tools_dir/$toolname/download.done")
+					{
+						print "\t$toolname is done!\n";
+						next;
+					}
+				}elsif(-f "$tools_dir/$toolname")
+				{
+						print "\t$toolname is done!\n";
+						next;
 				}
+				
+				if(-e $tool)
+				{
+					`rm $tool`;
+				}				
 				`wget http://sysbio.rnet.missouri.edu/multicom_db_tools/tools/$tool`;
+				
 				if(-e "$tool")
 				{
 					print "\n\t\t$tool is found, start extracting files......\n\n";
@@ -606,6 +676,7 @@ if(!(-e $method_file) or !(-e $method_info))
 					chdir($tools_dir);
 					`echo 'done' > $toolname/download.done`;
 					`rm $tool`;
+					`chmod -R 755 $toolname`;
 				}else{
 					die "Failed to download $tool from http://sysbio.rnet.missouri.edu/multicom_db_tools/tools, please contact chengji\@missouri.edu\n";
 				}
@@ -640,7 +711,10 @@ if(!(-e $method_file) or !(-e $method_info))
 					
 					}else{
 						print("\n\t\t#### Download uniprot20\n\n");
-						-e "uniprot20_2016_02.tgz" || `rm uniprot20_2016_02.tgz`;
+						if(-e "uniprot20_2016_02.tgz")
+						{
+							`rm uniprot20_2016_02.tgz`;
+						}
 						`wget http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/old-releases/uniprot20_2016_02.tgz`;
 						if(-e "uniprot20_2016_02.tgz")
 						{
@@ -648,6 +722,7 @@ if(!(-e $method_file) or !(-e $method_info))
 							`tar -xf uniprot20_2016_02.tgz`;
 							`echo 'done' > uniprot20_2016_02/download.done`;
 							`rm uniprot20_2016_02.tgz`;
+							`chmod -R 755 uniprot20_2016_02`;
 						}else{
 							die "Failed to download uniprot20_2016_02.tgz from http://wwwuser.gwdg.de/~compbiol/data/hhsuite/databases/hhsuite_dbs/old-releases/\n";
 						}
@@ -658,10 +733,32 @@ if(!(-e $method_file) or !(-e $method_info))
 					{
 						`rm uniprot20_2016_02_a3m_db`; 
 						`rm uniprot20_2016_02_hhm_db`; 
+					
+						$status = system("rm uniprot20_2016_02_a3m_db");
+						if($status)
+						{
+							 die "Failed to remove file (uniprot20_2016_02_a3m_db), check the permission\n";
+						}
+						$status = system("rm uniprot20_2016_02_hhm_db");
+						if($status)
+						{
+							 die "Failed to remove file (uniprot20_2016_02_hhm_db), check the permission\n";
+						}
 					}
-				
-					`ln -s uniprot20_2016_02_a3m.ffdata uniprot20_2016_02_a3m_db`;
-					`ln -s uniprot20_2016_02_hhm.ffdata uniprot20_2016_02_hhm_db`;
+					
+					$status = system("ln -s uniprot20_2016_02_a3m.ffdata uniprot20_2016_02_a3m_db");
+					if($status)
+					{
+						 die "Failed to link database(uniprot20_2016_02_a3m_db), check the permission\n";
+					}
+					$status = system("ln -s uniprot20_2016_02_hhm.ffdata uniprot20_2016_02_hhm_db");
+					if($status)
+					{
+						 die "Failed to link database(uniprot20_2016_02_hhm_db), check the permission\n";
+					}
+			
+					`chmod -R 755 uniprot20_2016_02_a3m_db`;
+					`chmod -R 755 uniprot20_2016_02_hhm_db`;
 					
 					next;
 				}
@@ -693,13 +790,14 @@ if(!(-e $method_file) or !(-e $method_info))
 						{
 							`rm uniclust30_2017_10_hhsuite.tar.gz`;
 						}
-						`wget http://wwwuser.gwdg.de/~compbiol/uniclust/2017_10/uniclust30_2017_10_hhsuite.tar.gz`;
+						`wget http://wwwuser.gwdg.de/~compbiol/uniclust/2017_10/uniclust30_2017_10_hhsuite.tar.gz`  || die "Failed to download, check permission or file path\n";
 						if(-e "uniclust30_2017_10_hhsuite.tar.gz")
 						{
 							print "\t\tuniclust30_2017_10_hhsuite.tar.gz is found, start extracting files......\n";
 							`tar -zxf uniclust30_2017_10_hhsuite.tar.gz`;
 							`echo 'done' > uniclust30_2017_10/download.done`;
 							`rm uniclust30_2017_10_hhsuite.tar.gz`;
+							`chmod -R 755 uniclust30_2017_10`;
 						}else{
 							die "Failed to download uniclust30_2017_10_hhsuite.tar.gz from http://wwwuser.gwdg.de/~compbiol/uniclust/2017_10/\n";
 						}
@@ -713,6 +811,8 @@ if(!(-e $method_file) or !(-e $method_info))
 				
 					`ln -s uniclust30_2017_10_a3m.ffdata uniclust30_2017_10_a3m_db`;
 					`ln -s uniclust30_2017_10_hhm.ffdata uniclust30_2017_10_hhm_db`;
+					`chmod -R 755 uniclust30_2017_10_a3m_db`;
+					`chmod -R 755 uniclust30_2017_10_hhm_db`;
 					
 					next;
 				}
@@ -724,13 +824,14 @@ if(!(-e $method_file) or !(-e $method_info))
 					print "\t\t$dbname is done!\n";
 					next;
 				}
-				`wget http://sysbio.rnet.missouri.edu/multicom_db_tools/databases/$db`;
+				`wget http://sysbio.rnet.missouri.edu/multicom_db_tools/databases/$db`  || die "Failed to download, check permission or file path\n";
 				if(-e "$db")
 				{
 					print "\t\t$db is found, start extracting files......\n\n";
 					`tar -zxf $db`;
 					`echo 'done' > $dbname/download.done`;
 					`rm $db`;
+					`chmod -R 755 $dbname`;
 				}else{
 					die "Failed to download $db from http://sysbio.rnet.missouri.edu/multicom_db_tools/databases, please contact chengji\@missouri.edu\n";
 				}
@@ -785,6 +886,7 @@ if(!(-e $method_file) or !(-e $method_info))
 							close TMPOUT;
 						}else{
 							`ln -s $uniref_dir/$file $raptorx_nr/nr90.$subfix`;
+							`chmod -R 755 $raptorx_nr/nr90.$subfix`;
 						}
 					}
 					
@@ -816,6 +918,7 @@ if(!(-e $method_file) or !(-e $method_info))
 							close TMPOUT;
 						}else{
 							`ln -s $uniref_dir/$file $raptorx_nr/nr70.$subfix`;
+							`chmod -R 755 $raptorx_nr/nr70.$subfix`;
 						}
 						
 					}
@@ -1117,6 +1220,35 @@ if(-d $prc_db)
 	close PRCLIB;
 }
 
+
+$addr_scwrl4 = $multicom_db_tools_dir."/tools/scwrl4";
+if(-d $addr_scwrl4)
+{
+	print "\n#########  Setting up scwrl4 \n";
+	$addr_scwrl_orig = $addr_scwrl4."/"."Scwrl4.ini";
+	$addr_scwrl_back = $addr_scwrl4."/"."Scwrl4.ini.back";
+	system("cp $addr_scwrl_orig $addr_scwrl_back");
+	@ttt = ();
+	$OUT = new FileHandle ">$addr_scwrl_orig";
+	$IN=new FileHandle "$addr_scwrl_back";
+	while(defined($line=<$IN>))
+	{
+		chomp($line);
+		@ttt = split(/\s+/,$line);
+		
+		if(@ttt>1 && $ttt[1] eq "FilePath")
+		{
+			print $OUT "\tFilePath\t=\t$addr_scwrl4/bbDepRotLib.bin\n"; 
+		}
+		else
+		{
+			print $OUT $line."\n";
+		}
+	}
+	$IN->close();
+	$OUT->close();
+	print "Done\n";
+}
 
 
 print "\n\n";
